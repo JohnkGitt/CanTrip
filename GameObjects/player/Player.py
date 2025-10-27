@@ -1,9 +1,14 @@
 import pygame
-from pygame.examples.moveit import GameObject
+from GameObjects.GameObjects import gameObject
 
 
-class Player(GameObject):
+class Player(gameObject):
     def __init__(self, position):
+        self.ID = 1
+
+        self.posX = 0
+        self.posY = 0
+
         self.sheet = pygame.image.load('PSprites.png')
 
         #16x26
@@ -31,7 +36,7 @@ class Player(GameObject):
 
         self.isJumping = False
 
-        def get_frame(self, frame_set):  # Get the next frame in the given frame set (animation loop).
+    def get_frame(self, frame_set):  # Get the next frame in the given frame set (animation loop).
             # Increment the frame counter.
             self.frame += 1
 
@@ -42,7 +47,7 @@ class Player(GameObject):
             print(frame_set[self.frame])  # Debugging: print the current frame's rectangle.
             return frame_set[self.frame]
 
-        def clip(self, clipped_rect):  # Set the clipping region (current frame) based on a provided rectangle.
+    def clip(self, clipped_rect):  # Set the clipping region (current frame) based on a provided rectangle.
             if type(clipped_rect) is dict:  # If the clipped rect is a dictionary (animation set), get the next frame.
                 self.sheet.set_clip(pygame.Rect(self.get_frame(clipped_rect)))
             else:
@@ -50,7 +55,7 @@ class Player(GameObject):
                 self.sheet.set_clip(pygame.Rect(clipped_rect))
             return clipped_rect  # Return the clipped rectangle.
 
-        def update(self, direction):  # Update the character's position and animation based on the direction.
+    def update(self, direction):  # Update the character's position and animation based on the direction.
             if direction == 'left':  # Move left and play left walking animation.
                 self.clip(self.leftWalkStates)
                 self.rect.x -= 5  # Move the sprite left by 5 pixels.
@@ -68,3 +73,16 @@ class Player(GameObject):
 
             # Update the image with the current clipped frame.
             self.image = self.sheet.subsurface(self.sheet.get_clip())
+
+    def getID(self):
+        return self.ID
+
+    def setPOS(self, x, y):
+        self.posX = x
+        self.posY = y
+
+    def getPOS(self):
+        return self.posX, self.posY
+
+    def att_Handler(self):
+        pass
