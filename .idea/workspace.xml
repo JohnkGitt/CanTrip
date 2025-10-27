@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="jump frames (no jumping)">
-      <change afterPath="$PROJECT_DIR$/Cantrip.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameObjects/Assoc_Block/Assoc_Block.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameObjects/Att_Block/Att_Block.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameObjects/Door/Door.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameObjects/Obj_Block/Obj_Block.py" afterDir="false" />
+    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="object files">
+      <change afterPath="$PROJECT_DIR$/GameObjects/Door/door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PSprites.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cantrip.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cantrip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameObjects/Assoc_Block/Assoc_Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Assoc_Block/Assoc_Block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameObjects/Att_Block/Att_Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Att_Block/Att_Block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameObjects/Door/Door.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Door/Door.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameObjects/Obj_Block/Obj_Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Obj_Block/Obj_Block.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameObjects/player/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/player/Player.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +53,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.Cantrip.executor": "Run",
+    "Python.Player.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -58,7 +62,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/johni/PycharmProjects/CanTrip/GameObjects/player",
+    "last_opened_file_path": "C:/Users/johni/PycharmProjects/CanTrip",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,6 +74,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\johni\PycharmProjects\CanTrip" />
+      <recent name="C:\Users\johni\PycharmProjects\CanTrip\GameObjects\Door" />
       <recent name="C:\Users\johni\PycharmProjects\CanTrip\GameObjects\player" />
       <recent name="C:\Users\johni\PycharmProjects\CanTrip\Resources" />
     </key>
@@ -93,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1761075736957</updated>
       <workItem from="1761495307306" duration="1224000" />
-      <workItem from="1761581329374" duration="8304000" />
+      <workItem from="1761581329374" duration="11667000" />
     </task>
     <task id="LOCAL-00001" summary="sprites">
       <option name="closed" value="true" />
@@ -135,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761586819977</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="object files">
+      <option name="closed" value="true" />
+      <created>1761597730270</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1761597730270</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +178,11 @@
     <MESSAGE value="Player Walking states and Movement (No Jumping)" />
     <MESSAGE value="Game Objects Attribute Class" />
     <MESSAGE value="jump frames (no jumping)" />
-    <option name="LAST_COMMIT_MESSAGE" value="jump frames (no jumping)" />
+    <MESSAGE value="object files" />
+    <option name="LAST_COMMIT_MESSAGE" value="object files" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CanTrip$Cantrip.coverage" NAME="Cantrip Coverage Results" MODIFIED="1761601693665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CanTrip$Player.coverage" NAME="Player Coverage Results" MODIFIED="1761600577402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GameObjects/player" />
   </component>
 </project>

@@ -6,9 +6,6 @@ class Player(gameObject):
     def __init__(self, position):
         self.ID = 1
 
-        self.posX = 0
-        self.posY = 0
-
         self.sheet = pygame.image.load('PSprites.png')
 
         #16x26
@@ -24,65 +21,68 @@ class Player(gameObject):
         self.leftWalkStates = {0:(0, 0, 16, 26), 1:(16, 0, 16, 26), 2:(32, 0, 16, 26), 3:(48, 0, 16, 26),
                                4:(64, 0, 16, 26), 5:(80, 0, 16, 26), 6:(96, 0, 16, 26), 7:(112, 0, 32, 26)}
 
-        self.rightWalkStates = {0:(192, 20, 16, 26), 1:(176, 20, 16, 26), 2:(160, 20, 16, 26), 3:(144, 20, 16, 26),
-                                4:(128, 20, 16, 26), 5:(112, 20, 16, 26), 6:(96,20, 16, 26), 7:(80, 20, 16, 26)}
+        self.rightWalkStates = {0:(192, 31, 16, 26), 1:(176, 31, 16, 26), 2:(160, 31, 16, 26), 3:(144, 31, 16, 26),
+                                4:(128, 31, 16, 26), 5:(112, 31, 16, 26), 6:(96, 31, 16, 26), 7:(80, 31, 16, 26)}
 
         self.leftIdleStates = {0:(144, 0, 16, 26), 1:(160, 0, 16, 26), 2:(176, 0, 16, 26), 3:(192, 0, 16, 26)}
 
-        self.rightIdleStates = {0:(48, 0, 16, 26), 1:(32, 0, 16, 26), 2:(16, 0, 16, 26), 3:(0, 0, 16, 26)}
+        self.rightIdleStates = {0:(48, 31, 16, 26), 1:(32, 31, 16, 26), 2:(16, 31, 16, 26), 3:(0, 31, 16, 26)}
 
         self.leftJump = {0:(0, 0, 16, 26)}
         self.rightJump = {0: (192, 20, 16, 26)}
 
         self.isJumping = False
 
-    def get_frame(self, frame_set):  # Get the next frame in the given frame set (animation loop).
-            # Increment the frame counter.
+    def get_frame(self, frame_set):
             self.frame += 1
-
-            # Loop back to the first frame if the counter exceeds the number of frames.
             if self.frame > (len(frame_set) - 1):
                 self.frame = 0
 
-            print(frame_set[self.frame])  # Debugging: print the current frame's rectangle.
             return frame_set[self.frame]
 
-    def clip(self, clipped_rect):  # Set the clipping region (current frame) based on a provided rectangle.
-            if type(clipped_rect) is dict:  # If the clipped rect is a dictionary (animation set), get the next frame.
+    def clip(self, clipped_rect):
+            if type(clipped_rect) is dict:
                 self.sheet.set_clip(pygame.Rect(self.get_frame(clipped_rect)))
             else:
-                # Set the clipping area directly if it's a specific rectangle.
                 self.sheet.set_clip(pygame.Rect(clipped_rect))
-            return clipped_rect  # Return the clipped rectangle.
+            return clipped_rect
 
-    def update(self, direction):  # Update the character's position and animation based on the direction.
-            if direction == 'left':  # Move left and play left walking animation.
+    def update(self, direction):
+            if direction == 'left':
                 self.clip(self.leftWalkStates)
-                self.rect.x -= 5  # Move the sprite left by 5 pixels.
-            if direction == 'right':  # Move right and play right walking animation.
+                self.rect.x -= 5
+            if direction == 'right':
                 self.clip(self.rightWalkStates)
                 self.rect.x += 5
-
-
-            # Standing still animations (no movement, just switching frames to standing).
             if direction == 'stand_left':
                 self.clip(self.leftIdleStates)
             if direction == 'stand_right':
                 self.clip(self.rightIdleStates)
 
-
-            # Update the image with the current clipped frame.
             self.image = self.sheet.subsurface(self.sheet.get_clip())
+
+    def handle_event(self, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                self.update('left')
+            if event.key == pygame.K_RIGHT:
+                self.update('right')
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT:
+                self.update('stand_left')
+            if event.key == pygame.K_RIGHT:
+                self.update('stand_right')
+
 
     def getID(self):
         return self.ID
 
-    def setPOS(self, x, y):
-        self.posX = x
-        self.posY = y
+    def setPOS(self, X, Y):
+        self.rect.x = X
+        self.rect.y = Y
 
     def getPOS(self):
-        return self.posX, self.posY
+        return self.rect.x, self.rect.y
 
     def att_Handler(self):
         pass
