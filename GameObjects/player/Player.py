@@ -1,6 +1,8 @@
 import pygame
+from pygame.examples.moveit import GameObject
 
-class Player(pygame.sprite.Sprite):
+
+class Player(GameObject):
     def __init__(self, position):
         self.sheet = pygame.image.load('PSprites.png')
 
