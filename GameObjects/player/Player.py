@@ -26,6 +26,11 @@ class Player(GameObject):
 
         self.rightIdleStates = {0:(48, 0, 16, 26), 1:(32, 0, 16, 26), 2:(16, 0, 16, 26), 3:(0, 0, 16, 26)}
 
+        self.leftJump = {0:(0, 0, 16, 26)}
+        self.rightJump = {0: (192, 20, 16, 26)}
+
+        self.isJumping = False
+
         def get_frame(self, frame_set):  # Get the next frame in the given frame set (animation loop).
             # Increment the frame counter.
             self.frame += 1

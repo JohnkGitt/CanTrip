@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="Player Walking states and Movement (No Jumping)">
-      <change afterPath="$PROJECT_DIR$/GameObjects/GameObjects.py" afterDir="false" />
+    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="Game Objects Attribute Class">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameObjects/player/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/player/Player.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +88,7 @@
       <option name="presentableId" value="Default" />
       <updated>1761075736957</updated>
       <workItem from="1761495307306" duration="1224000" />
-      <workItem from="1761581329374" duration="4022000" />
+      <workItem from="1761581329374" duration="5199000" />
     </task>
     <task id="LOCAL-00001" summary="sprites">
       <option name="closed" value="true" />
@@ -113,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761585091849</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Game Objects Attribute Class">
+      <option name="closed" value="true" />
+      <created>1761585643967</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1761585643967</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +149,7 @@
     <MESSAGE value="sprites" />
     <MESSAGE value="Player Walking states" />
     <MESSAGE value="Player Walking states and Movement (No Jumping)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Player Walking states and Movement (No Jumping)" />
+    <MESSAGE value="Game Objects Attribute Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Game Objects Attribute Class" />
   </component>
 </project>
