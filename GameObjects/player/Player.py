@@ -60,10 +60,18 @@ class Player(gameObject):
                 self.clip(self.leftIdleStates)
             if direction == 'stand_right':
                 self.clip(self.rightIdleStates)
-            for sprite in collideList:
-                if not self.rect.colliderect(sprite.rect):
-                    self.rect.y += 3
-
+            if not self.onGround(collideList):
+                self.rect.y += 5
+            if self.isJumping:
+                if self.jumpCount == 20:
+                    self.jumpCount = 0
+                    self.isJumping = False
+                if self.jumpCount > 14:
+                    self.jumpCount += 1
+                    self.rect.y -= 5
+                else:
+                    self.jumpCount += 1
+                    self.rect.y -= 10
             self.image = self.sheet.subsurface(self.sheet.get_clip())
 
     def onGround(self, collideList):
@@ -78,13 +86,15 @@ class Player(gameObject):
                 self.update('left', collision)
             if event.key == pygame.K_RIGHT:
                 self.update('right', collision)
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_UP and self.onGround(collision):
                 self.isJumping = True
+                self.update('stand_right', collision)
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 self.update('stand_left', collision)
             if event.key == pygame.K_RIGHT:
                 self.update('stand_right', collision)
+
 
 
     def getID(self):
