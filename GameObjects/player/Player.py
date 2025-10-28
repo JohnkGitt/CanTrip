@@ -3,8 +3,9 @@ from GameObjects.GameObjects import gameObject
 
 
 class Player(gameObject):
-    def __init__(self, position):
+    def __init__(self, position, collideList):
         self.ID = 1
+        self.CList = collideList
 
         self.sheet = pygame.image.load('PSprites.png')
 
@@ -47,7 +48,7 @@ class Player(gameObject):
                 self.sheet.set_clip(pygame.Rect(clipped_rect))
             return clipped_rect
 
-    def update(self, direction):
+    def update(self, direction, collideList):
             if direction == 'left':
                 self.clip(self.leftWalkStates)
                 self.rect.x -= 5
@@ -58,20 +59,25 @@ class Player(gameObject):
                 self.clip(self.leftIdleStates)
             if direction == 'stand_right':
                 self.clip(self.rightIdleStates)
+            for sprite in collideList:
+                if not self.rect.colliderect(sprite.rect):
+                    self.rect.y += 3
 
             self.image = self.sheet.subsurface(self.sheet.get_clip())
 
-    def handle_event(self, event):
+
+
+    def handle_event(self, event, collision):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                self.update('left')
+                self.update('left', collision)
             if event.key == pygame.K_RIGHT:
-                self.update('right')
+                self.update('right', collision)
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
-                self.update('stand_left')
+                self.update('stand_left', collision)
             if event.key == pygame.K_RIGHT:
-                self.update('stand_right')
+                self.update('stand_right', collision)
 
 
     def getID(self):
