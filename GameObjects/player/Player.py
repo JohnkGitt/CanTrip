@@ -33,6 +33,7 @@ class Player(gameObject):
         self.rightJump = {0: (192, 20, 16, 26)}
 
         self.isJumping = False
+        self.jumpCount = 0
 
     def get_frame(self, frame_set):
             self.frame += 1
@@ -65,7 +66,11 @@ class Player(gameObject):
 
             self.image = self.sheet.subsurface(self.sheet.get_clip())
 
-
+    def onGround(self, collideList):
+        for sprite in collideList:
+            if self.rect.colliderect(sprite.rect):
+                return True
+        return False
 
     def handle_event(self, event, collision):
         if event.type == pygame.KEYDOWN:
@@ -73,6 +78,8 @@ class Player(gameObject):
                 self.update('left', collision)
             if event.key == pygame.K_RIGHT:
                 self.update('right', collision)
+            if event.key == pygame.K_UP:
+                self.isJumping = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 self.update('stand_left', collision)
