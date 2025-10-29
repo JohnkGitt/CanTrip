@@ -70,10 +70,10 @@ class Player(gameObject):
                     self.rect.y -= 10
             if direction == 'left':
                 self.clip(self.leftWalkStates)
-                self.rect.x -= 5
+                self.rect.x -= self.left_collide(collideList)
             if direction == 'right':
                 self.clip(self.rightWalkStates)
-                self.rect.x += 5
+                self.rect.x += self.right_collide(collideList)
             if direction == 'stand_left':
                 self.clip(self.leftIdleStates)
             if direction == 'stand_right':
@@ -88,6 +88,26 @@ class Player(gameObject):
             if self.rect.colliderect(sprite.rect):
                 return True
         return False
+
+    def left_collide(self, collideList):
+        count = 0
+        for sprite in collideList:
+            if count > 0:
+                dif =   self.rect.left - sprite.rect.right
+                if dif < 5 and dif >=0:
+                    return dif
+            count+=1
+        return 5
+
+    def right_collide(self, collideList):
+        count = 0
+        for sprite in collideList:
+            if count > 0:
+                dif = sprite.rect.left - self.rect.right
+                if dif < 5 and dif >= 0:
+                    return dif
+            count += 1
+        return 5
 
     def jump(self, collideList):
         if not(self.isJumping) and self.onGround(collideList):

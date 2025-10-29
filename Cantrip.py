@@ -46,6 +46,9 @@ def resolveObjIDtoTargetObj(id):
             return obj
     return None
 
+
+#notes: the ground will need to be the first obj in a collide list
+
 gameOver = False
 while not gameOver:
     for event in pygame.event.get():
