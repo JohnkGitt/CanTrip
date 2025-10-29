@@ -3,8 +3,7 @@ from GameObjects.GameObjects import gameObject
 from enum import Enum
 
 class DoorAttributes(Enum):
-    OPEN = 0
-    CLOSED = 1
+    OPEN_CLOSED = 0
 
 class Door(gameObject):
     def __init__(self, x, y, width, height, id):
@@ -22,6 +21,4 @@ class Door(gameObject):
 
     def att_Handler(self, attribute):
         if attribute == DoorAttributes.OPEN:
-            self.open_door()
-        elif attribute == DoorAttributes.CLOSED:
-            self.close_door()
+            self.is_open = not self.is_open
