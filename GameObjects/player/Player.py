@@ -1,6 +1,12 @@
 import pygame
 from GameObjects.GameObjects import gameObject
+from enum import Enum
 
+class PlayerAttributes(Enum):
+    JUMP = 0
+    WALK_LEFT = 1
+    WALK_RIGHT = 2
+    GRAB = 3
 
 class Player(gameObject):
     def __init__(self, position, collideList):

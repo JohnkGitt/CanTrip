@@ -16,9 +16,13 @@ col_list.add(ground)
 
 canRobot = Player((0,0), col_list)
 canRobot.setPOS((screen_w // 2), (screen_h // 2))
+all_gameObjects = pygame.sprite.Group()
 
-
-
+def resolveObjIDtoTargetObj(id):
+    for obj in all_gameObjects:
+        if obj.getID() == id:
+            return obj
+    return None
 
 gameOver = False
 while not gameOver:
