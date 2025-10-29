@@ -6,9 +6,23 @@ class DoorAttributes(Enum):
     OPEN_CLOSED = 0
 
 class Door(gameObject):
-    def __init__(self, x, y, width, height, id):
+    def __init__(self, x, y,  width, height, id):
+
         super().__init__(x, y, width, height, id)
+        self.frame = 0
+        self.ID = id
         self.is_open = False
+
+        self.sheet = pygame.image.load('Door.png')
+
+        self.sheet.set_clip(pygame.Rect(1, 0, 35, 36))
+
+        self.image = self.sheet.subsurface(self.sheet.get_clip())
+        self.rect = self.image.get_rect()
+
+        self.closed =(1, 0, 35, 36)
+
+        self.opened = (155, 0, 35, 36)
 
     def open_door(self):
         self.is_open = True
@@ -16,9 +30,37 @@ class Door(gameObject):
     def close_door(self):
         self.is_open = False
 
+    def isOpen(self):
+        return self.is_open
+
     def draw(self, surface):
-        pygame.draw.rect(surface, self.color, (self.x, self.y, self.width, self.height))
+        pygame.draw.rect(surface, self.color, (self.rect.x, self.rect.y, self.width, self.height))
+
+    def clip(self, clipped_rect):
+            if type(clipped_rect) is dict:
+                self.sheet.set_clip(pygame.Rect(self.get_frame(clipped_rect)))
+            else:
+                self.sheet.set_clip(pygame.Rect(clipped_rect))
+            return clipped_rect
+
+    def update(self):
+        if (self.isOpen()):
+            self.clip(self.opened)
+        else:
+            self.clip(self.closed)
+        self.image = self.sheet.subsurface(self.sheet.get_clip())
+
+    def get_frame(self, frame_set):
+            self.frame += 1
+            if self.frame > (len(frame_set) - 1):
+                self.frame = 0
+
+            return frame_set[self.frame]
 
     def att_Handler(self, attribute):
-        if attribute == DoorAttributes.OPEN:
+        if attribute == DoorAttributes.OPEN_CLOSED:
             self.is_open = not self.is_open
+
+    def setPOS(self, X, Y):
+        self.rect.x = X
+        self.rect.y = Y
