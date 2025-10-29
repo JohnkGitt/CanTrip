@@ -4,7 +4,7 @@ from GameObjects.player.Player import PlayerAttributes
 from GameObjects.Obj_Block import Obj_Block
 from GameObjects.Att_Block import Att_Block
 from GameObjects.GameObjects import gameObject
-from Cantrip import
+from Cantrip import Cantrip
 
 associationDictionary = {
     ("Door", "Open"): DoorAttributes.OPEN,      # UPDATE THIS DICTIONARY WITH ALL ASSOCIATIONS
