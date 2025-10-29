@@ -4,38 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="canRobot Animations working">
-      <change afterPath="$PROJECT_DIR$/Resources/LocalH.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/background 1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="halfway jump">
+      <change beforePath="$PROJECT_DIR$/GameObjects/player/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/player/Player.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;JohnkGitt&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "JohnkGitt"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/JohnkGitt/CanTrip.git&quot;,
-    &quot;accountId&quot;: &quot;dfaedfe9-099e-42f0-ac99-7f90ed961797&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/JohnkGitt/CanTrip.git",
+    "accountId": "edf4da5a-3974-4d56-96b4-c9d55ebeb389"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -50,38 +41,15 @@
     "Python.Cantrip.executor": "Run",
     "Python.Player.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/johni/PycharmProjects/CanTrip/Resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\johni\PycharmProjects\CanTrip\Resources" />
-      <recent name="C:\Users\johni\PycharmProjects\CanTrip" />
-      <recent name="C:\Users\johni\PycharmProjects\CanTrip\GameObjects\Door" />
-      <recent name="C:\Users\johni\PycharmProjects\CanTrip\GameObjects\player" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\johni\PycharmProjects\CanTrip\GameObjects\player" />
-    </key>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
-        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+        <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
       </set>
     </attachedChunks>
   </component>
@@ -92,100 +60,29 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1761075736957</updated>
-      <workItem from="1761495307306" duration="1224000" />
-      <workItem from="1761581329374" duration="14952000" />
     </task>
-    <task id="LOCAL-00001" summary="sprites">
+    <task id="LOCAL-00001" summary="player gravity">
       <option name="closed" value="true" />
-      <created>1761495545376</created>
+      <created>1761670997712</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1761495545376</updated>
+      <updated>1761670997712</updated>
     </task>
-    <task id="LOCAL-00002" summary="Player Walking states">
+    <task id="LOCAL-00002" summary="halfway jump">
       <option name="closed" value="true" />
-      <created>1761584394390</created>
+      <created>1761671941149</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1761584394390</updated>
+      <updated>1761671941149</updated>
     </task>
-    <task id="LOCAL-00003" summary="Player Walking states and Movement (No Jumping)">
-      <option name="closed" value="true" />
-      <created>1761585091849</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1761585091849</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Game Objects Attribute Class">
-      <option name="closed" value="true" />
-      <created>1761585643967</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1761585643967</updated>
-    </task>
-    <task id="LOCAL-00005" summary="jump frames (no jumping)">
-      <option name="closed" value="true" />
-      <created>1761586819977</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1761586819977</updated>
-    </task>
-    <task id="LOCAL-00006" summary="object files">
-      <option name="closed" value="true" />
-      <created>1761597730270</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1761597730270</updated>
-    </task>
-    <task id="LOCAL-00007" summary="canRobot Animations working">
-      <option name="closed" value="true" />
-      <created>1761601931968</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1761601931968</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="CUSTOM_BOOLEAN_PROPERTIES">
-                <map>
-                  <entry key="Show.Git.Branches" value="false" />
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sprites" />
-    <MESSAGE value="Player Walking states" />
-    <MESSAGE value="Player Walking states and Movement (No Jumping)" />
-    <MESSAGE value="Game Objects Attribute Class" />
-    <MESSAGE value="jump frames (no jumping)" />
-    <MESSAGE value="object files" />
-    <MESSAGE value="canRobot Animations working" />
-    <option name="LAST_COMMIT_MESSAGE" value="canRobot Animations working" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CanTrip$Cantrip.coverage" NAME="Cantrip Coverage Results" MODIFIED="1761602452239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CanTrip$Player.coverage" NAME="Player Coverage Results" MODIFIED="1761600577402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GameObjects/player" />
+    <MESSAGE value="player gravity" />
+    <MESSAGE value="halfway jump" />
+    <option name="LAST_COMMIT_MESSAGE" value="halfway jump" />
   </component>
 </project>

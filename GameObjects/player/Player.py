@@ -3,8 +3,9 @@ from GameObjects.GameObjects import gameObject
 
 
 class Player(gameObject):
-    def __init__(self, position):
+    def __init__(self, position, collideList):
         self.ID = 1
+        self.CList = collideList
 
         self.sheet = pygame.image.load('PSprites.png')
 
@@ -32,6 +33,7 @@ class Player(gameObject):
         self.rightJump = {0: (192, 20, 16, 26)}
 
         self.isJumping = False
+        self.jumpCount = 0
 
     def get_frame(self, frame_set):
             self.frame += 1
@@ -47,7 +49,7 @@ class Player(gameObject):
                 self.sheet.set_clip(pygame.Rect(clipped_rect))
             return clipped_rect
 
-    def update(self, direction):
+    def update(self, direction, collideList):
             if direction == 'left':
                 self.clip(self.leftWalkStates)
                 self.rect.x -= 5
@@ -58,20 +60,41 @@ class Player(gameObject):
                 self.clip(self.leftIdleStates)
             if direction == 'stand_right':
                 self.clip(self.rightIdleStates)
-
+            if not self.onGround(collideList):
+                self.rect.y += 5
+            if self.isJumping:
+                if self.jumpCount == 20:
+                    self.jumpCount = 0
+                    self.isJumping = False
+                if self.jumpCount > 14:
+                    self.jumpCount += 1
+                    self.rect.y -= 5
+                else:
+                    self.jumpCount += 1
+                    self.rect.y -= 10
             self.image = self.sheet.subsurface(self.sheet.get_clip())
 
-    def handle_event(self, event):
+    def onGround(self, collideList):
+        for sprite in collideList:
+            if self.rect.colliderect(sprite.rect):
+                return True
+        return False
+
+    def handle_event(self, event, collision):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                self.update('left')
+                self.update('left', collision)
             if event.key == pygame.K_RIGHT:
-                self.update('right')
+                self.update('right', collision)
+            if event.key == pygame.K_UP and self.onGround(collision):
+                self.isJumping = True
+                self.update('stand_right', collision)
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
-                self.update('stand_left')
+                self.update('stand_left', collision)
             if event.key == pygame.K_RIGHT:
-                self.update('stand_right')
+                self.update('stand_right', collision)
+
 
 
     def getID(self):
