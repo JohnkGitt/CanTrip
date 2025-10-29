@@ -1,10 +1,10 @@
 import pygame
-from GameObjects.Door import DoorAttributes
-from GameObjects.player import PlayerAttributes
+from GameObjects.Door.Door import DoorAttributes
+from GameObjects.player.Player import PlayerAttributes
 from GameObjects.Obj_Block import Obj_Block
 from GameObjects.Att_Block import Att_Block
 from GameObjects.GameObjects import gameObject
-from Cantrip import Cantrip
+from Cantrip import
 
 associationDictionary = {
     ("Door", "Open"): DoorAttributes.OPEN,      # UPDATE THIS DICTIONARY WITH ALL ASSOCIATIONS

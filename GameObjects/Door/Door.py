@@ -40,7 +40,7 @@ class Door(gameObject):
                 self.sheet.set_clip(pygame.Rect(clipped_rect))
             return clipped_rect
 
-    def update(self):
+    def update(self, collideList):
         if (self.isOpen()):
             self.clip(self.opened)
         else:
