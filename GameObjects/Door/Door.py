@@ -33,9 +33,6 @@ class Door(gameObject):
     def isOpen(self):
         return self.is_open
 
-    def draw(self, surface):
-        pygame.draw.rect(surface, self.color, (self.rect.x, self.rect.y, self.width, self.height))
-
     def clip(self, clipped_rect):
             if type(clipped_rect) is dict:
                 self.sheet.set_clip(pygame.Rect(self.get_frame(clipped_rect)))

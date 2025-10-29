@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="door attHandler update">
-      <change afterPath="$PROJECT_DIR$/door.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cantrip.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cantrip.py" afterDir="false" />
+    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="door open and wincon">
       <change beforePath="$PROJECT_DIR$/GameObjects/Door/Door.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Door/Door.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameObjects/GameObjects.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/GameObjects.py" afterDir="false" />
     </list>
@@ -116,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761747325395</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="door open and wincon">
+      <option name="closed" value="true" />
+      <created>1761758411065</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1761758411065</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -125,6 +130,7 @@
     <MESSAGE value="JUMPKIN!!!!!!!" />
     <MESSAGE value="JUMPKIN!!!!!!! (no freeze on jump)" />
     <MESSAGE value="door attHandler update" />
-    <option name="LAST_COMMIT_MESSAGE" value="door attHandler update" />
+    <MESSAGE value="door open and wincon" />
+    <option name="LAST_COMMIT_MESSAGE" value="door open and wincon" />
   </component>
 </project>
