@@ -24,6 +24,8 @@ class Door(gameObject):
 
         self.opened = (155, 0, 35, 36)
 
+        self.rect.topleft = (x, y)
+
     def open_door(self):
         self.is_open = True
 

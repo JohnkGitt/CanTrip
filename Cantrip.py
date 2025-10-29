@@ -16,28 +16,31 @@ ground = pygame.sprite.Sprite()
 ground.rect = pygame.Rect(0, 700, screen_w, 20)
 
 spriteList = pygame.sprite.Group()
+blockList = pygame.sprite.Group()
 col_list = pygame.sprite.Group()
+grabbed_list = pygame.sprite.Group()
 col_list.add(ground)
 
 #door
-endDoor = Door(0, 700, 35, 36, 1)
-endDoor.setPOS(0,664)
+endDoor = Door(0, 664, 35, 36, 1)
 spriteList.add(endDoor)
 
+
 #player
-canRobot = Player((0,0), col_list)
-canRobot.setPOS((screen_w // 2), (screen_h // 2))
+canRobot = Player(screen_w//2, screen_h//2, col_list)
 all_gameObjects = pygame.sprite.Group()
+
 
 #object Block
 doorBlock = Obj_Block(100, 620, 80, 80, 2, 'door', 1)
 col_list.add(doorBlock)
 spriteList.add(doorBlock)
-
+blockList.add(doorBlock)
 #attribute Block
 openBlock = Att_Block(1000, 620, 80, 80, 2, 'door', 1)
 col_list.add(openBlock)
 spriteList.add(openBlock)
+blockList.add(openBlock)
 
 
 def resolveObjIDtoTargetObj(id):
@@ -48,8 +51,9 @@ def resolveObjIDtoTargetObj(id):
 
 
 #notes: the ground will need to be the first obj in a collide list
-
+#notes: sprite list, collide list, block list, grabbed list
 gameOver = False
+
 while not gameOver:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -74,6 +78,7 @@ while not gameOver:
             canRobot.update('up', col_list)
     elif keys[pygame.K_UP]:
         canRobot.update('up', col_list)
+
     elif keys[pygame.K_SPACE] and endDoor.isOpen():
         if canRobot.rect.colliderect(canRobot.rect):
             pygame.display.set_caption("win")

@@ -9,11 +9,14 @@ class PlayerAttributes(Enum):
     GRAB = 3
 
 class Player(gameObject):
-    def __init__(self, position, collideList):
+    def __init__(self, x, y, collideList):
         self.ID = 1
         self.CList = collideList
-
+        self.lastFace = ''
         self.sheet = pygame.image.load('PSprites.png')
+
+        self.finalx = 0
+        self.finaly = 0
 
         #16x26
         self.sheet.set_clip(pygame.Rect(0, 0, 16, 26))
@@ -21,7 +24,7 @@ class Player(gameObject):
         self.image = self.sheet.subsurface(self.sheet.get_clip())
         self.rect = self.image.get_rect()
 
-        self.rect.topleft = position
+        self.rect.topleft = (x, y)
 
         self.frame = 0
 
@@ -56,6 +59,9 @@ class Player(gameObject):
             return clipped_rect
 
     def update(self, direction, collideList):
+            finalx = self.rect.x
+            finaly = self.rect.y
+
             if not self.onGround(collideList):
                 self.rect.y += 5
             if self.isJumping:
@@ -64,22 +70,27 @@ class Player(gameObject):
                     self.isJumping = False
                 if self.jumpCount > 14:
                     self.jumpCount += 1
-                    self.rect.y -= 5
+                    self.rect.y -= 9
                 else:
                     self.jumpCount += 1
-                    self.rect.y -= 10
+                    self.rect.y -= 12
             if direction == 'left':
                 self.clip(self.leftWalkStates)
                 self.rect.x -= self.left_collide(collideList)
+                self.lastFace = 'left'
             if direction == 'right':
                 self.clip(self.rightWalkStates)
                 self.rect.x += self.right_collide(collideList)
+                self.lastFace = 'right'
             if direction == 'stand_left':
                 self.clip(self.leftIdleStates)
             if direction == 'stand_right':
                 self.clip(self.rightIdleStates)
             if direction == 'up':
                 self.jump(collideList)
+            finalx = finalx - self.rect.x
+            finaly = finaly - self.rect.y
+
 
             self.image = self.sheet.subsurface(self.sheet.get_clip())
 
@@ -94,7 +105,9 @@ class Player(gameObject):
         for sprite in collideList:
             if count > 0:
                 dif =   self.rect.left - sprite.rect.right
-                if dif < 5 and dif >=0:
+                cond1 = 5 > dif >= 0
+                cond2 = self.rect.bottom > sprite.rect.top  and sprite.rect.bottom >  self.rect.top
+                if cond1 and cond2:
                     return dif
             count+=1
         return 5
@@ -104,7 +117,9 @@ class Player(gameObject):
         for sprite in collideList:
             if count > 0:
                 dif = sprite.rect.left - self.rect.right
-                if dif < 5 and dif >= 0:
+                cond1 = 5 > dif >= 0
+                cond2 = self.rect.bottom > sprite.rect.top and sprite.rect.bottom > self.rect.top
+                if cond1 and cond2:
                     return dif
             count += 1
         return 5
@@ -112,7 +127,6 @@ class Player(gameObject):
     def jump(self, collideList):
         if not(self.isJumping) and self.onGround(collideList):
             self.isJumping = True
-
 
 
     def getID(self):
@@ -127,3 +141,6 @@ class Player(gameObject):
 
     def att_Handler(self):
         pass
+
+    def getDelta(self):
+        return self.finalx, self.finaly
