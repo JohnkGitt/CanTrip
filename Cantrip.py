@@ -29,7 +29,16 @@ while not gameOver:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gameOver = True
-    canRobot.handle_event(event, col_list)
+
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        canRobot.update('left', col_list)
+    elif keys[pygame.K_RIGHT]:
+        canRobot.update('right', col_list)
+    elif keys[pygame.K_UP]:
+        canRobot.update('up', col_list)
+    else:
+        canRobot.update('stand_right', col_list)
     screen.fill((0,0,0))
     screen.blit(canRobot.image, canRobot.rect)
 

@@ -56,16 +56,6 @@ class Player(gameObject):
             return clipped_rect
 
     def update(self, direction, collideList):
-            if direction == 'left':
-                self.clip(self.leftWalkStates)
-                self.rect.x -= 5
-            if direction == 'right':
-                self.clip(self.rightWalkStates)
-                self.rect.x += 5
-            if direction == 'stand_left':
-                self.clip(self.leftIdleStates)
-            if direction == 'stand_right':
-                self.clip(self.rightIdleStates)
             if not self.onGround(collideList):
                 self.rect.y += 5
             if self.isJumping:
@@ -78,6 +68,19 @@ class Player(gameObject):
                 else:
                     self.jumpCount += 1
                     self.rect.y -= 10
+            if direction == 'left':
+                self.clip(self.leftWalkStates)
+                self.rect.x -= 5
+            if direction == 'right':
+                self.clip(self.rightWalkStates)
+                self.rect.x += 5
+            if direction == 'stand_left':
+                self.clip(self.leftIdleStates)
+            if direction == 'stand_right':
+                self.clip(self.rightIdleStates)
+            if direction == 'up':
+                self.jump(collideList)
+
             self.image = self.sheet.subsurface(self.sheet.get_clip())
 
     def onGround(self, collideList):
@@ -86,20 +89,9 @@ class Player(gameObject):
                 return True
         return False
 
-    def handle_event(self, event, collision):
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                self.update('left', collision)
-            if event.key == pygame.K_RIGHT:
-                self.update('right', collision)
-            if event.key == pygame.K_UP and self.onGround(collision):
-                self.isJumping = True
-                self.update('stand_right', collision)
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT:
-                self.update('stand_left', collision)
-            if event.key == pygame.K_RIGHT:
-                self.update('stand_right', collision)
+    def jump(self, collideList):
+        if not(self.isJumping) and self.onGround(collideList):
+            self.isJumping = True
 
 
 
