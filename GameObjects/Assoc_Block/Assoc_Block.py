@@ -4,7 +4,6 @@ from GameObjects.player.Player import PlayerAttributes
 from GameObjects.Obj_Block import Obj_Block
 from GameObjects.Att_Block import Att_Block
 from GameObjects.GameObjects import gameObject
-from Cantrip import Cantrip
 
 associationDictionary = {
     ("Door", "Open"): DoorAttributes.OPEN_CLOSED,      # UPDATE THIS DICTIONARY WITH ALL ASSOCIATIONS
@@ -15,54 +14,93 @@ associationDictionary = {
 }
 
 class Assoc_Block(gameObject):
-    def __init__(self, x, y, width, height, text):
-        super().__init__(x, y, width, height)
+    def __init__(self, x, y, width, height, id, text):
+        super().__init__(x, y, width, height, id)
         self.text = text
 
         self.sheet = pygame.image.load('assoc_block.png')
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
         self.image = self.sheet.subsurface(self.sheet.get_clip())
 
-        self.pos1Collider = gameObject.__init__(self.x - (self.width // 3), self.y, self.width // 3, self.height)
-        self.pos2Collider = gameObject.__init__(self.x, self.y - (self.height // 3), self.width, self.height // 3)
-        self.pos3Collider = gameObject.__init__(self.x + (self.width // 3), self.y, self.width // 3, self.height)
-        self.pos4Collider = gameObject.__init__(self.x, self.y + (self.height // 3), self.width, self.height // 3)
-        self.posColliderList = pygame.sprite.Group()
-        self.posColliderList = (self.pos1Collider, self.pos2Collider, self.pos3Collider, self.pos4Collider)
+        self.pos1Collider = gameObject(
+            x = self.rect.x - (self.width // 3),
+            y = self.rect.y,
+            width = self.width // 3,
+            height = self.height,
+            id = 1000
+            )
+        self.pos2Collider = gameObject(
+            x = self.rect.x,
+            y = self.rect.y - (self.height // 3),
+            width = self.width,
+            height = self.height // 3,
+            id = 1001
+            )
+        self.pos3Collider = gameObject(
+            x = self.rect.x + (self.width // 3), 
+            y = self.rect.y,
+            width = self.width // 3,
+            height = self.height,
+            id = 1002
+            )    
+        self.pos4Collider = gameObject(
+            x = self.rect.x,
+            y = self.rect.y + (self.height // 3),
+            width = self.width,
+            height = self.height // 3,
+            id = 1003
+            )
         self.associationActive = False
         self.objBlockAssociation = None
         self.attBlockAssociation = None
+        self._cantrip = None # Lazy load of Cantrip module to avoid circular import
 
-    def update(self):
-         # Update collider positions relative to Assoc_Block position
-        self.pos1Collider.setPOS(self.x - self.width, self.y)
-        self.pos2Collider.setPOS(self.x, self.y - self.height)
-        self.pos3Collider.setPOS(self.x + self.width, self.y)
-        self.pos4Collider.setPOS(self.x, self.y + self.height)
+    def _get_cantrip(self):
+        # Lazy import of Cantrip (only called once)
+        if self._cantrip is None:
+            import Cantrip
+            self._cantrip = Cantrip
+        return self._cantrip
 
-        # Find all gameObjects that collide with any of the position colliders
-        for gameObj in Cantrip.all_gameObjects:
-            collidingObjects = pygame.sprite.spritecollide(gameObj, self.posColliderList, False)
-            # Resolve colliding objects into Obj_Block and Att_Block references (if any)
-            for obj in collidingObjects:
-                if isinstance(obj, Obj_Block):
-                    self.objBlockAssociation = obj
-                if isinstance(obj, Att_Block):
-                    self.attBlockAssociation = obj
-        
-        # If objBlock and attBlock were resolved...
+    def update(self, collideList):
+         # Update pos colliders
+        self.pos1Collider.setPOS(self.rect.x - self.width, self.rect.y)
+        self.pos2Collider.setPOS(self.rect.x, self.rect.y - self.height)
+        self.pos3Collider.setPOS(self.rect.x + self.width, self.rect.y)
+        self.pos4Collider.setPOS(self.rect.x, self.rect.y + self.height)
+
+        # Reset
+        self.objBlockAssociation = None
+        self.attBlockAssociation = None
+
+        # Check only Obj_Block and Att_Block
+        for obj in collideList:
+            if not isinstance(obj, (Obj_Block, Att_Block)):
+                continue
+
+            rect = obj.rect
+
+            if self.pos1Collider.rect.colliderect(rect) and isinstance(obj, Obj_Block):
+                self.objBlockAssociation = obj
+            elif self.pos2Collider.rect.colliderect(rect) and isinstance(obj, Obj_Block):
+                self.objBlockAssociation = obj
+            elif self.pos3Collider.rect.colliderect(rect) and isinstance(obj, Att_Block):
+                self.attBlockAssociation = obj
+            elif self.pos4Collider.rect.colliderect(rect) and isinstance(obj, Att_Block):
+                self.attBlockAssociation = obj
+
+        # Now handle association
         if self.objBlockAssociation and self.attBlockAssociation:
-            # Check proximity and check if association is already active
-            if self.prox_Check(self.objBlockAssociation, self.attBlockAssociation) and not self.associationActive:
-                # If proximity check is valid and association not already active, activate association between attribute and object
-                self.assoc_Handler(self.objBlockAssociation, self.attBlockAssociation)
-                self.associationActive = True
-            if self.associationActive and not self.prox_Check(self.objBlockAssociation, self.attBlockAssociation):
-                # If proximity check is invalid and association is active, deactivate association between attribute and object
-                self.associationActive = False
-                self.assoc_Handler(self.objBlockAssociation, self.attBlockAssociation)
-                self.objBlockAssociation = None
-                self.attBlockAssociation = None
+            if self.prox_Check(self.objBlockAssociation, self.attBlockAssociation):
+                if not self.associationActive:
+                    self.assoc_Handler(self.objBlockAssociation, self.attBlockAssociation)
+                    self.associationActive = True
+            else:
+                if self.associationActive:
+                    self.assoc_Handler(self.objBlockAssociation, self.attBlockAssociation)  # deactivate
+                    self.associationActive = False
+                    self.objBlockAssociation = None
+                    self.attBlockAssociation = None
 
 
     def get_text(self):
@@ -83,22 +121,18 @@ class Assoc_Block(gameObject):
         return 0
     
     def assoc_Handler(self, objBlock, attBlock):
-        validAssociation = False
+        Cantrip = self._get_cantrip()  # This will need to be changed. The associated objID to object resolution will take place in a separate class in the future
         associationPair = (objBlock.get_text(), attBlock.get_text())
         targetChange = None
         
         # Checks if (obj, att) association is found within defined association dictionary
-        for key in associationDictionary.items():
-            if associationPair == key:
+        for assocPair, targetChange in associationDictionary.items():
+            if associationPair == assocPair:
                 # If found, resolve pair to a integer that marks a specific change to be made to target object
-                targetChange = associationDictionary[key]
-                validAssociation = True
-
-        if not validAssociation:
-            return 0
-        
-        # Resolve object ID to target object within Cantrip game world and call its associated att_Handler method with targetChange
-        Cantrip.resolveObjIDtoTargetObj(objBlock.getID()).att_Handler(targetChange)
+                # Resolve object ID to target object within Cantrip game world and call its associated att_Handler method with targetChange
+                Cantrip.resolveObjIDtoTargetObj(objBlock.getID()).att_Handler(targetChange)
+                break
+                
         
 
 
