@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="no mo' collisions">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cantrip.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cantrip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameObjects/Assoc_Block/Assoc_Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Assoc_Block/Assoc_Block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameObjects/player/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/player/Player.py" afterDir="false" />
-    </list>
+    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="assoc collisions" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761846430110</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="assoc collisions">
+      <option name="closed" value="true" />
+      <created>1761852737034</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1761852737034</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,7 +213,8 @@
     <MESSAGE value="left and right collision with canrobot" />
     <MESSAGE value="i dont even know what changed" />
     <MESSAGE value="no mo' collisions" />
-    <option name="LAST_COMMIT_MESSAGE" value="no mo' collisions" />
+    <MESSAGE value="assoc collisions" />
+    <option name="LAST_COMMIT_MESSAGE" value="assoc collisions" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CanTrip$Cantrip.coverage" NAME="Cantrip Coverage Results" MODIFIED="1761852325290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

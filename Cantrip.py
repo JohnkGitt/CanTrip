@@ -19,22 +19,23 @@ ground.rect = pygame.Rect(0, 700, screen_w, 20)
 spriteList = pygame.sprite.Group()
 blockList = pygame.sprite.Group()
 col_list = pygame.sprite.Group()
+all_gameObjects = pygame.sprite.Group()
 grabbed_list = pygame.sprite.Group()
 col_list.add(ground)
 
 #door
-endDoor = Door(0, 664, 35, 36, 1)
+endDoor = Door(0, 664, 35, 36, 2)
 spriteList.add(endDoor)
+all_gameObjects.add(endDoor)
 
 
 #player
 canRobot = Player((screen_w//2), (screen_h//2), 16, 26, 1)
-all_gameObjects = pygame.sprite.Group()
 all_gameObjects.add(canRobot)
 all_gameObjects.add(endDoor)
 
 #object Block
-doorBlock = Obj_Block(100, 620, 80, 80, 2, "Door", 1)
+doorBlock = Obj_Block(100, 620, 80, 80, 2, "Door", 2)
 col_list.add(doorBlock)
 spriteList.add(doorBlock)
 blockList.add(doorBlock)
