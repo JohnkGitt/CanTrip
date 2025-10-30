@@ -33,5 +33,9 @@ class Obj_Block(gameObject):
         if not self.onGround(collideList):
             self.rect.y += 5
 
+    def update2(self, X, Y):
+        self.rect.x -= X
+        self.rect.y -= Y
+
 
 

@@ -21,13 +21,17 @@ class Att_Block(gameObject):
     def set_text(self, text):
         self.text = text
 
-        def onGround(self, collideList):
+    def onGround(self, collideList):
             for sprite in collideList:
                 if self.rect.colliderect(sprite.rect):
                     return True
             return False
 
-        def update(self, collideList):
+    def update(self, collideList):
             if not self.onGround(collideList):
                 self.rect.y += 5
+
+    def update2(self, X, Y):
+            self.rect.x -= X
+            self.rect.y -= Y
 

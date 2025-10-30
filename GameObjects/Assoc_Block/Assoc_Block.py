@@ -29,6 +29,9 @@ class Assoc_Block(gameObject):
         self.objBlockAssociation = None
         self.attBlockAssociation = None
 
+
+
+
     def update(self):
          # Update collider positions relative to Assoc_Block position
         self.pos1Collider.setPOS(self.x - self.width, self.y)
