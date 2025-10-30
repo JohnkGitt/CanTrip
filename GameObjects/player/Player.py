@@ -150,7 +150,7 @@ class Player(gameObject):
     def getDelta(self):
         return self.finalx, self.finaly
 
-    def grab(self, blockGroup):
+    def grab(self, blockGroup, collideGroup):
         if self.lastFace == 'left':
             self.grabCollider = pygame.Rect(self.rect.x - 20, self.rect.y, 20, self.rect.height)
             for block  in blockGroup:
@@ -158,6 +158,8 @@ class Player(gameObject):
                     self.grabbed.append(block)
                     block.rect.y -= self.rect.height
                     block.rect.x = self.rect.x - self.rect.width
+                    collideGroup.remove(block)
+                    self.grabbed[0].changeGrabbed()
                     return
         else:
             self.grabCollider = pygame.Rect(self.rect.right + 20, self.rect.y, 20, self.rect.height)
@@ -166,4 +168,18 @@ class Player(gameObject):
                     self.grabbed.append(block)
                     block.rect.y -= self.rect.height
                     block.rect.x = self.rect.x - self.rect.width
+                    collideGroup.remove(block)
+                    self.grabbed[0].changeGrabbed()
                     return
+
+    def place(self, collideList):
+        if self.lastFace == 'left':
+            self.grabbed[0].rect.x = self.rect.left - 10 - self.grabbed[0].rect.width
+        elif self.lastFace == 'right':
+            self.grabbed[0].rect.x = self.rect.right + 10
+        self.grabbed[0].rect.bottom = self.rect.bottom
+       # self.grabbed[0].collide_adjust(collideList)
+        collideList.add(self.grabbed[0])
+        self.grabbed[0].changeGrabbed()
+        self.grabbed.pop()
+

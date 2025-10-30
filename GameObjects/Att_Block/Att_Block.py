@@ -4,6 +4,7 @@ from GameObjects.GameObjects import gameObject
 class Att_Block(gameObject):
     def __init__(self, x, y, width, height, id, text, attribute):
         super().__init__(x, y, width, height, id)
+        self.isGrabbed = False
         self.text = text
         self.att = attribute
         self.sheet = pygame.image.load('att_block.png')
@@ -23,15 +24,17 @@ class Att_Block(gameObject):
 
     def onGround(self, collideList):
             for sprite in collideList:
-                if self.rect.colliderect(sprite.rect):
+                if self.rect.colliderect(sprite.rect) and self != sprite:
                     return True
             return False
 
     def update(self, collideList):
-            if not self.onGround(collideList):
-                self.rect.y += 5
+        if not self.onGround(collideList) and not self.isGrabbed:
+            self.rect.y += 5
 
     def update2(self, X, Y):
             self.rect.x -= X
             self.rect.y -= Y
 
+    def changeGrabbed(self):
+        self.isGrabbed = not self.isGrabbed

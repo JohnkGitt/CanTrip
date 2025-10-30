@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="i dont even know what changed">
+    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="block placeholder sprites">
+      <change beforePath="$PROJECT_DIR$/.idea/CanTrip.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CanTrip.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cantrip.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cantrip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameObjects/Att_Block/Att_Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Att_Block/Att_Block.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameObjects/Obj_Block/Obj_Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Obj_Block/Obj_Block.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameObjects/player/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/player/Player.py" afterDir="false" />
     </list>
@@ -14,13 +17,6 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,7 +30,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/JohnkGitt/CanTrip.git&quot;,
-    &quot;accountId&quot;: &quot;dfaedfe9-099e-42f0-ac99-7f90ed961797&quot;
+    &quot;accountId&quot;: &quot;edf4da5a-3974-4d56-96b4-c9d55ebeb389&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -49,40 +45,56 @@
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python.Cantrip.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Door.executor&quot;: &quot;Run&quot;,
     &quot;Python.Player.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/johni/PycharmProjects/CanTrip&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/John/PycharmProjects/CanTrip/GameObjects&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\johni\PycharmProjects\CanTrip" />
-      <recent name="C:\Users\johni\PycharmProjects\CanTrip\Resources" />
-      <recent name="C:\Users\johni\PycharmProjects\CanTrip\GameObjects\Door" />
-      <recent name="C:\Users\johni\PycharmProjects\CanTrip\GameObjects\player" />
+      <recent name="C:\Users\John\PycharmProjects\CanTrip\GameObjects" />
+      <recent name="C:\Users\John\PycharmProjects\CanTrip" />
+      <recent name="C:\Users\John\PycharmProjects\CanTrip\GameObjects\Att_Block" />
+      <recent name="C:\Users\John\PycharmProjects\CanTrip\GameObjects\Assoc_Block" />
+      <recent name="C:\Users\John\PycharmProjects\CanTrip\GameObjects\Obj_Block" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\johni\PycharmProjects\CanTrip\GameObjects\player" />
+      <recent name="C:\Users\John\PycharmProjects\CanTrip" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Cantrip" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="CanTrip" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.13" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Cantrip.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
-        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+        <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
       </set>
     </attachedChunks>
   </component>
@@ -93,118 +105,74 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1761075736957</updated>
-      <workItem from="1761495307306" duration="1224000" />
-      <workItem from="1761581329374" duration="14952000" />
     </task>
-    <task id="LOCAL-00001" summary="sprites">
+    <task id="LOCAL-00001" summary="player gravity">
       <option name="closed" value="true" />
-      <created>1761495545376</created>
+      <created>1761670997712</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1761495545376</updated>
+      <updated>1761670997712</updated>
     </task>
-    <task id="LOCAL-00002" summary="Player Walking states">
+    <task id="LOCAL-00002" summary="halfway jump">
       <option name="closed" value="true" />
-      <created>1761584394390</created>
+      <created>1761671941149</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1761584394390</updated>
+      <updated>1761671941149</updated>
     </task>
-    <task id="LOCAL-00003" summary="Player Walking states and Movement (No Jumping)">
+    <task id="LOCAL-00003" summary="JUMPKIN!!!!!!!">
       <option name="closed" value="true" />
-      <created>1761585091849</created>
+      <created>1761675025505</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1761585091849</updated>
+      <updated>1761675025506</updated>
     </task>
-    <task id="LOCAL-00004" summary="Game Objects Attribute Class">
+    <task id="LOCAL-00004" summary="JUMPKIN!!!!!!! (no freeze on jump)">
       <option name="closed" value="true" />
-      <created>1761585643967</created>
+      <created>1761746829656</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1761585643967</updated>
+      <updated>1761746829656</updated>
     </task>
-    <task id="LOCAL-00005" summary="jump frames (no jumping)">
+    <task id="LOCAL-00005" summary="door attHandler update">
       <option name="closed" value="true" />
-      <created>1761586819977</created>
+      <created>1761747325395</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1761586819977</updated>
+      <updated>1761747325395</updated>
     </task>
-    <task id="LOCAL-00006" summary="object files">
+    <task id="LOCAL-00006" summary="door open and wincon">
       <option name="closed" value="true" />
-      <created>1761597730270</created>
+      <created>1761758411065</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1761597730270</updated>
+      <updated>1761758411065</updated>
     </task>
-    <task id="LOCAL-00007" summary="canRobot Animations working">
+    <task id="LOCAL-00007" summary="block placeholder sprites">
       <option name="closed" value="true" />
-      <created>1761601931968</created>
+      <created>1761758881884</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1761601931968</updated>
+      <updated>1761758881884</updated>
     </task>
-    <task id="LOCAL-00008" summary="left and right collision with canrobot">
-      <option name="closed" value="true" />
-      <created>1761772854110</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1761772854110</updated>
-    </task>
-    <task id="LOCAL-00009" summary="i dont even know what changed">
-      <option name="closed" value="true" />
-      <created>1761781795366</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1761781795366</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="CUSTOM_BOOLEAN_PROPERTIES">
-                <map>
-                  <entry key="Show.Git.Branches" value="false" />
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sprites" />
-    <MESSAGE value="Player Walking states" />
-    <MESSAGE value="Player Walking states and Movement (No Jumping)" />
-    <MESSAGE value="Game Objects Attribute Class" />
-    <MESSAGE value="jump frames (no jumping)" />
-    <MESSAGE value="object files" />
-    <MESSAGE value="canRobot Animations working" />
-    <MESSAGE value="left and right collision with canrobot" />
-    <MESSAGE value="i dont even know what changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="i dont even know what changed" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CanTrip$Cantrip.coverage" NAME="Cantrip Coverage Results" MODIFIED="1761783675169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CanTrip$Player.coverage" NAME="Player Coverage Results" MODIFIED="1761783650634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GameObjects/player" />
+    <MESSAGE value="player gravity" />
+    <MESSAGE value="halfway jump" />
+    <MESSAGE value="JUMPKIN!!!!!!!" />
+    <MESSAGE value="JUMPKIN!!!!!!! (no freeze on jump)" />
+    <MESSAGE value="door attHandler update" />
+    <MESSAGE value="door open and wincon" />
+    <MESSAGE value="block placeholder sprites" />
+    <option name="LAST_COMMIT_MESSAGE" value="block placeholder sprites" />
   </component>
 </project>

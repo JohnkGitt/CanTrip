@@ -7,6 +7,7 @@ class Obj_Block(gameObject):
         self.text = text
         self.target = target
         self.sheet = pygame.image.load('obj_block.png')
+        self.isGrabbed = False
 
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
 
@@ -25,17 +26,20 @@ class Obj_Block(gameObject):
 
     def onGround(self, collideList):
         for sprite in collideList:
-            if self.rect.colliderect(sprite.rect):
+            if self.rect.colliderect(sprite.rect) and self != sprite:
                 return True
         return False
 
     def update(self, collideList):
-        if not self.onGround(collideList):
+        if not self.onGround(collideList) and not self.isGrabbed:
             self.rect.y += 5
+        pass
 
     def update2(self, X, Y):
         self.rect.x -= X
         self.rect.y -= Y
 
+    def changeGrabbed(self):
+        self.isGrabbed = not self.isGrabbed
 
 

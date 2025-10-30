@@ -61,12 +61,15 @@ def resolveObjIDtoTargetObj(id):
 #notes: the ground will need to be the first obj in a collide list
 #notes: sprite list, collide list, block list, grabbed list
 gameOver = False
+eBufferCounter = 0
 
 while not gameOver:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gameOver = True
     screen.fill((0,0,0))
+    if eBufferCounter <= 5:
+        eBufferCounter += 1
 
     #update each moveable sprite
     for sprite in spriteList:
@@ -86,8 +89,13 @@ while not gameOver:
             canRobot.update('up', col_list)
     elif keys[pygame.K_UP]:
         canRobot.update('up', col_list)
-    elif keys[pygame.K_e]:
-        canRobot.grab(blockList)
+    elif keys[pygame.K_e] and eBufferCounter > 3:
+        if len(canRobot.grabbed) == 0:
+            canRobot.grab(blockList, col_list)
+            eBufferCounter = 0
+        else:
+            canRobot.place(col_list)
+            eBufferCounter = 0
 
     elif keys[pygame.K_SPACE] and endDoor.isOpen():
         if canRobot.rect.colliderect(canRobot.rect):
