@@ -75,18 +75,20 @@ class Assoc_Block(gameObject):
 
         # Check only Obj_Block and Att_Block
         for obj in collideList:
-            if not isinstance(obj, (Obj_Block, Att_Block)):
+            isObjBlock = isinstance(obj, (Obj_Block.Obj_Block))
+            isAttBlock = isinstance (obj, (Att_Block.Att_Block))
+            if not isObjBlock and not isAttBlock:
                 continue
 
             rect = obj.rect
 
-            if self.pos1Collider.rect.colliderect(rect) and isinstance(obj, Obj_Block):
+            if self.pos1Collider.rect.colliderect(rect) and isObjBlock:
                 self.objBlockAssociation = obj
-            elif self.pos2Collider.rect.colliderect(rect) and isinstance(obj, Obj_Block):
+            elif self.pos2Collider.rect.colliderect(rect) and isObjBlock:
                 self.objBlockAssociation = obj
-            elif self.pos3Collider.rect.colliderect(rect) and isinstance(obj, Att_Block):
+            elif self.pos3Collider.rect.colliderect(rect) and isAttBlock:
                 self.attBlockAssociation = obj
-            elif self.pos4Collider.rect.colliderect(rect) and isinstance(obj, Att_Block):
+            elif self.pos4Collider.rect.colliderect(rect) and isAttBlock:
                 self.attBlockAssociation = obj
 
         # Now handle association
