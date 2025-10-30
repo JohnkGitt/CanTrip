@@ -28,27 +28,31 @@ spriteList.add(endDoor)
 
 
 #player
-canRobot = Player(screen_w//2, screen_h//2)
+canRobot = Player((screen_w//2), (screen_h//2), 16, 26, 1)
 all_gameObjects = pygame.sprite.Group()
-
+all_gameObjects.add(canRobot)
+all_gameObjects.add(endDoor)
 
 #object Block
 doorBlock = Obj_Block(100, 620, 80, 80, 2, "Door", 1)
 col_list.add(doorBlock)
 spriteList.add(doorBlock)
 blockList.add(doorBlock)
+all_gameObjects.add(doorBlock)
 
 #Assoc Block
 assocBlock = Assoc_Block(550, 620, 80, 80, 3, "is")
 col_list.add(assocBlock)
 spriteList.add(assocBlock)
 blockList.add(assocBlock)
+all_gameObjects.add(assocBlock)
 
 #attribute Block
-openBlock = Att_Block(1000, 620, 80, 80, 2, "Open", 1)
+openBlock = Att_Block(1000, 620, 80, 80, 2, "Open", 0)
 col_list.add(openBlock)
 spriteList.add(openBlock)
 blockList.add(openBlock)
+all_gameObjects.add(openBlock)
 
 
 def resolveObjIDtoTargetObj(id):

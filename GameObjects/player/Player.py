@@ -11,11 +11,13 @@ class PlayerAttributes(Enum):
     GRAB = 3
 
 class Player(gameObject):
-    def __init__(self, x, y):
-        self.ID = 1
+    def __init__(self, x, y, width, height, id):
+        super().__init__(x, y, width, height, id)
+        self.ID = id
         self.lastFace = ''
         self.sheet = pygame.image.load('PSprites.png')
-
+        self.width = width
+        self.height = height
         self.finalx = 0
         self.finaly = 0
 
@@ -182,4 +184,7 @@ class Player(gameObject):
         collideList.add(self.grabbed[0])
         self.grabbed[0].changeGrabbed()
         self.grabbed.pop()
+
+    def getID(self):
+        return self.ID
 

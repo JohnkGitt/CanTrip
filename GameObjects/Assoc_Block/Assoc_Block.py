@@ -17,7 +17,7 @@ class Assoc_Block(gameObject):
     def __init__(self, x, y, width, height, id, text):
         super().__init__(x, y, width, height, id)
         self.text = text
-
+        self.isGrabbed = False
         self.sheet = pygame.image.load('assoc_block.png')
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
         self.image = self.sheet.subsurface(self.sheet.get_clip())
@@ -134,6 +134,27 @@ class Assoc_Block(gameObject):
                 # Resolve object ID to target object within Cantrip game world and call its associated att_Handler method with targetChange
                 Cantrip.resolveObjIDtoTargetObj(objBlock.getID()).att_Handler(targetChange)
                 break
+
+    def update2(self, X, Y):
+        self.rect.x -= X
+        self.rect.y -= Y
+
+    def changeGrabbed(self):
+        self.isGrabbed = not self.isGrabbed
+
+    def collide_adjust(self, colliders):
+        for sprite in colliders:
+            if self.rect.colliderect(sprite.rect):
+                ydiff = self.rect.bottom - sprite.rect.top
+                ldiff = sprite.rect.right - self.rect.left
+                rdiff = self.rect.right - sprite.rect.left
+                if ydiff < ldiff and ydiff < rdiff:
+                    self.rect.y -= ydiff
+                elif ldiff > rdiff:
+                    self.rect.x += ldiff
+                else:
+                    self.rect.x += rdiff
+
                 
         
 
