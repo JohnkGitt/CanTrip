@@ -2,7 +2,7 @@ import pygame
 from GameObjects.player.Player import Player
 from GameObjects.Door.Door import Door
 from GameObjects.Obj_Block.Obj_Block import Obj_Block
-from GameObjects.Assoc_Block import Assoc_Block
+from GameObjects.Assoc_Block.Assoc_Block import Assoc_Block
 from GameObjects.Att_Block.Att_Block import Att_Block
 
 pygame.init()
@@ -39,7 +39,7 @@ spriteList.add(doorBlock)
 blockList.add(doorBlock)
 
 #Assoc Block
-assocBlock = Att_Block(550, 620, 80, 80, 2, "is", 1)
+assocBlock = Assoc_Block(550, 620, 80, 80, 3, "is")
 col_list.add(assocBlock)
 spriteList.add(assocBlock)
 blockList.add(assocBlock)
@@ -89,7 +89,7 @@ while not gameOver:
             canRobot.update('up', col_list)
     elif keys[pygame.K_UP]:
         canRobot.update('up', col_list)
-    elif keys[pygame.K_e] and eBufferCounter > 3 and canRobot.onGround(col_list):
+    elif keys[pygame.K_e] and eBufferCounter > 3:
         if len(canRobot.grabbed) == 0:
             canRobot.grab(blockList, col_list)
             eBufferCounter = 0
