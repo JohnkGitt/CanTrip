@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="assoc collisions" />
+    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="crash fic, reset persists">
+      <change afterPath="$PROJECT_DIR$/floor.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cantrip.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cantrip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameObjects/Assoc_Block/Assoc_Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Assoc_Block/Assoc_Block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadMe.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/background 1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/background 1.jpg" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,6 +77,7 @@
       <recent name="C:\Users\johni\PycharmProjects\CanTrip\GameObjects\player" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\johni\PycharmProjects\CanTrip" />
       <recent name="C:\Users\johni\PycharmProjects\CanTrip\GameObjects\player" />
     </key>
   </component>
@@ -179,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761852737034</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="crash fic, reset persists">
+      <option name="closed" value="true" />
+      <created>1761853300654</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1761853300654</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,10 +230,11 @@
     <MESSAGE value="i dont even know what changed" />
     <MESSAGE value="no mo' collisions" />
     <MESSAGE value="assoc collisions" />
-    <option name="LAST_COMMIT_MESSAGE" value="assoc collisions" />
+    <MESSAGE value="crash fic, reset persists" />
+    <option name="LAST_COMMIT_MESSAGE" value="crash fic, reset persists" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CanTrip$Cantrip.coverage" NAME="Cantrip Coverage Results" MODIFIED="1761852325290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CanTrip$Cantrip.coverage" NAME="Cantrip Coverage Results" MODIFIED="1761856633107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CanTrip$Player.coverage" NAME="Player Coverage Results" MODIFIED="1761783650634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GameObjects/player" />
   </component>
 </project>

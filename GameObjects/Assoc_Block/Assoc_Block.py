@@ -14,13 +14,14 @@ associationDictionary = {
 }
 
 class Assoc_Block(gameObject):
-    def __init__(self, x, y, width, height, id, text):
+    def __init__(self, x, y, width, height, id, text, objList):
         super().__init__(x, y, width, height, id)
         self.text = text
         self.isGrabbed = False
         self.sheet = pygame.image.load('assoc_block.png')
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
         self.image = self.sheet.subsurface(self.sheet.get_clip())
+        self.objectList = objList
 
         self.pos1Collider = gameObject(
             x = self.rect.x - (self.width // 3),
@@ -123,7 +124,7 @@ class Assoc_Block(gameObject):
         return 0
     
     def assoc_Handler(self, objBlock, attBlock):
-        Cantrip = self._get_cantrip()  # This will need to be changed. The associated objID to object resolution will take place in a separate class in the future
+        #Cantrip = self._get_cantrip()  # This will need to be changed. The associated objID to object resolution will take place in a separate class in the future
         associationPair = (objBlock.get_text(), attBlock.get_text())
         targetChange = None
         
@@ -132,7 +133,7 @@ class Assoc_Block(gameObject):
             if associationPair == assocPair:
                 # If found, resolve pair to a integer that marks a specific change to be made to target object
                 # Resolve object ID to target object within Cantrip game world and call its associated att_Handler method with targetChange
-                Cantrip.resolveObjIDtoTargetObj(objBlock.getID()).att_Handler(targetChange)
+                self.resolveObjIDtoTargetObj(objBlock.getID()).att_Handler(targetChange)
                 break
 
     def update2(self, X, Y):
@@ -154,6 +155,12 @@ class Assoc_Block(gameObject):
                     self.rect.x += ldiff
                 else:
                     self.rect.x += rdiff
+
+    def resolveObjIDtoTargetObj(self, id):
+        for obj in self.objectList:
+            if obj.getID() == id:
+                return obj
+        return None
 
                 
         

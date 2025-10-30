@@ -9,12 +9,15 @@ pygame.init()
 screen_w = 1280
 screen_h = 720
 
+
+bg = pygame.image.load('background 1.jpg')
 screen = pygame.display.set_mode((screen_w, screen_h))
 pygame.display.set_caption("CanTrip")
 clock = pygame.time.Clock()
 
 ground = pygame.sprite.Sprite()
 ground.rect = pygame.Rect(0, 700, screen_w, 20)
+ground.image = pygame.image.load('floor.png')
 
 spriteList = pygame.sprite.Group()
 blockList = pygame.sprite.Group()
@@ -42,7 +45,7 @@ blockList.add(doorBlock)
 all_gameObjects.add(doorBlock)
 
 #Assoc Block
-assocBlock = Assoc_Block(550, 620, 80, 80, 3, "is")
+assocBlock = Assoc_Block(550, 620, 80, 80, 3, "is", all_gameObjects)
 col_list.add(assocBlock)
 spriteList.add(assocBlock)
 blockList.add(assocBlock)
@@ -73,6 +76,8 @@ while not gameOver:
         if event.type == pygame.QUIT:
             gameOver = True
     screen.fill((0,0,0))
+    screen.blit(bg, (0,0))
+    screen.blit(ground.image, ground.rect)
     if eBufferCounter <= 5:
         eBufferCounter += 1
 
