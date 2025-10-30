@@ -5,7 +5,8 @@ John Aragon:
     - Attribute Blocks
 
 Bode Hooker:
-    - Assoc Block
+    - Assoc Block (including prox_check() and assoc_handler() and related bug fixes for majority of logic)
     - Grid.py
     - Level.py
     - Tileset.py
+    - Base functionality for GameObjects.py
