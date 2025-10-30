@@ -32,6 +32,6 @@ class Att_Block(gameObject):
                 self.rect.y += 5
 
     def update2(self, X, Y):
-            self.rect.x += X
-            self.rect.y += Y
+            self.rect.x -= X
+            self.rect.y -= Y
 

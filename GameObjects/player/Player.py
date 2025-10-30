@@ -151,10 +151,19 @@ class Player(gameObject):
         return self.finalx, self.finaly
 
     def grab(self, blockGroup):
-        self.grabCollider = pygame.Rect(self.rect.x - 20, self.rect.y - 20, 20, self.rect.height)
-        for block  in blockGroup:
-            if self.grabCollider.colliderect(block):
-                self.grabbed.append(block)
-                block.rect.y -= self.rect.height
-                block.rect.x = self.rect.x - self.rect.width
-                return
+        if self.lastFace == 'left':
+            self.grabCollider = pygame.Rect(self.rect.x - 20, self.rect.y, 20, self.rect.height)
+            for block  in blockGroup:
+                if self.grabCollider.colliderect(block):
+                    self.grabbed.append(block)
+                    block.rect.y -= self.rect.height
+                    block.rect.x = self.rect.x - self.rect.width
+                    return
+        else:
+            self.grabCollider = pygame.Rect(self.rect.right + 20, self.rect.y, 20, self.rect.height)
+            for block in blockGroup:
+                if self.grabCollider.colliderect(block):
+                    self.grabbed.append(block)
+                    block.rect.y -= self.rect.height
+                    block.rect.x = self.rect.x - self.rect.width
+                    return
