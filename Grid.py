@@ -4,9 +4,9 @@ import Cantrip
 SCALE_FACTOR = 1                                     # Constant scale factor for tile size
 TILE_SIDE_LENGTH = 16 * SCALE_FACTOR                 # Side length of each tile in pixels relative to screen
 GRID_WIDTH = Cantrip.screen_w // TILE_SIDE_LENGTH    # Number of tiles that fit horizontally on the screen
-GRID_LENGTH = Cantrip.screen_h // TILE_SIDE_LENGTH   # Number of tiles that fit vertically on the screen
+GRID_HEIGHT = Cantrip.screen_h // TILE_SIDE_LENGTH   # Number of tiles that fit vertically on the screen
 MIN_GRID_POS = (0, 0)                                # Minimum grid position
-MAX_GRID_POS = (GRID_WIDTH - 1, GRID_LENGTH - 1)     # Maximum grid position
+MAX_GRID_POS = (GRID_WIDTH - 1, GRID_HEIGHT - 1)     # Maximum grid position
 
 # Functions for converting between screen coordinates and grid positions
 def resolveScreenCoordsToGridPos(x, y):
