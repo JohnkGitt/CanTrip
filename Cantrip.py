@@ -39,7 +39,7 @@ spriteList.add(doorBlock)
 blockList.add(doorBlock)
 
 #Assoc Block
-assocBlock = Assoc_Block(550, 620, 80, 80, 2, "is", 1)
+assocBlock = Att_Block(550, 620, 80, 80, 2, "is", 1)
 col_list.add(assocBlock)
 spriteList.add(assocBlock)
 blockList.add(assocBlock)
@@ -89,7 +89,7 @@ while not gameOver:
             canRobot.update('up', col_list)
     elif keys[pygame.K_UP]:
         canRobot.update('up', col_list)
-    elif keys[pygame.K_e] and eBufferCounter > 3:
+    elif keys[pygame.K_e] and eBufferCounter > 3 and canRobot.onGround(col_list):
         if len(canRobot.grabbed) == 0:
             canRobot.grab(blockList, col_list)
             eBufferCounter = 0

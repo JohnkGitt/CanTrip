@@ -38,3 +38,16 @@ class Att_Block(gameObject):
 
     def changeGrabbed(self):
         self.isGrabbed = not self.isGrabbed
+
+    def collide_adjust(self, colliders):
+        for sprite in colliders:
+            if self.rect.colliderect(sprite.rect):
+                ydiff = self.rect.bottom - sprite.rect.top
+                ldiff = sprite.rect.right - self.rect.left
+                rdiff = self.rect.right - sprite.rect.left
+                if ydiff < ldiff and ydiff < rdiff:
+                    self.rect.y -= ydiff
+                elif ldiff > rdiff:
+                    self.rect.x += ldiff
+                else:
+                    self.rect.x += rdiff

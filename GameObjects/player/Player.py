@@ -178,7 +178,7 @@ class Player(gameObject):
         elif self.lastFace == 'right':
             self.grabbed[0].rect.x = self.rect.right + 10
         self.grabbed[0].rect.bottom = self.rect.bottom
-       # self.grabbed[0].collide_adjust(collideList)
+        self.grabbed[0].collide_adjust(collideList)
         collideList.add(self.grabbed[0])
         self.grabbed[0].changeGrabbed()
         self.grabbed.pop()
