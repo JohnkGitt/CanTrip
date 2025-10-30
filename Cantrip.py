@@ -27,7 +27,7 @@ spriteList.add(endDoor)
 
 
 #player
-canRobot = Player(screen_w//2, screen_h//2, col_list)
+canRobot = Player(screen_w//2, screen_h//2)
 all_gameObjects = pygame.sprite.Group()
 
 
@@ -36,6 +36,7 @@ doorBlock = Obj_Block(100, 620, 80, 80, 2, 'door', 1)
 col_list.add(doorBlock)
 spriteList.add(doorBlock)
 blockList.add(doorBlock)
+
 #attribute Block
 openBlock = Att_Block(1000, 620, 80, 80, 2, 'door', 1)
 col_list.add(openBlock)
@@ -78,6 +79,8 @@ while not gameOver:
             canRobot.update('up', col_list)
     elif keys[pygame.K_UP]:
         canRobot.update('up', col_list)
+    elif keys[pygame.K_e]:
+        canRobot.grab(blockList)
 
     elif keys[pygame.K_SPACE] and endDoor.isOpen():
         if canRobot.rect.colliderect(canRobot.rect):
@@ -93,4 +96,5 @@ while not gameOver:
     clock.tick(20)
 
 pygame.quit()
+
 

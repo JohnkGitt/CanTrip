@@ -1,6 +1,8 @@
 import pygame
 from GameObjects.GameObjects import gameObject
 from enum import Enum
+from GameObjects.Att_Block.Att_Block import Att_Block
+from GameObjects.Obj_Block.Obj_Block import Obj_Block
 
 class PlayerAttributes(Enum):
     JUMP = 0
@@ -9,14 +11,15 @@ class PlayerAttributes(Enum):
     GRAB = 3
 
 class Player(gameObject):
-    def __init__(self, x, y, collideList):
+    def __init__(self, x, y):
         self.ID = 1
-        self.CList = collideList
         self.lastFace = ''
         self.sheet = pygame.image.load('PSprites.png')
 
         self.finalx = 0
         self.finaly = 0
+
+        self.grabbed = []
 
         #16x26
         self.sheet.set_clip(pygame.Rect(0, 0, 16, 26))
@@ -91,6 +94,8 @@ class Player(gameObject):
             finalx = finalx - self.rect.x
             finaly = finaly - self.rect.y
 
+            if len(self.grabbed) > 0:
+                self.grabbed[0].update2(finalx, finaly)
 
             self.image = self.sheet.subsurface(self.sheet.get_clip())
 
@@ -144,3 +149,12 @@ class Player(gameObject):
 
     def getDelta(self):
         return self.finalx, self.finaly
+
+    def grab(self, blockGroup):
+        self.grabCollider = pygame.Rect(self.rect.x - 20, self.rect.y - 20, 20, self.rect.height)
+        for block  in blockGroup:
+            if self.grabCollider.colliderect(block):
+                self.grabbed.append(block)
+                block.rect.y -= self.rect.height
+                block.rect.x = self.rect.x - self.rect.width
+                return
