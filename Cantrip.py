@@ -2,6 +2,7 @@ import pygame
 from GameObjects.player.Player import Player
 from GameObjects.Door.Door import Door
 from GameObjects.Obj_Block.Obj_Block import Obj_Block
+from GameObjects.Assoc_Block import Assoc_Block
 from GameObjects.Att_Block.Att_Block import Att_Block
 
 pygame.init()
@@ -32,13 +33,19 @@ all_gameObjects = pygame.sprite.Group()
 
 
 #object Block
-doorBlock = Obj_Block(100, 620, 80, 80, 2, 'door', 1)
+doorBlock = Obj_Block(100, 620, 80, 80, 2, "Door", 1)
 col_list.add(doorBlock)
 spriteList.add(doorBlock)
 blockList.add(doorBlock)
 
+#Assoc Block
+assocBlock = Att_Block(550, 620, 80, 80, 2, "is", 1)
+col_list.add(assocBlock)
+spriteList.add(assocBlock)
+blockList.add(assocBlock)
+
 #attribute Block
-openBlock = Att_Block(1000, 620, 80, 80, 2, 'door', 1)
+openBlock = Att_Block(1000, 620, 80, 80, 2, "Open", 1)
 col_list.add(openBlock)
 spriteList.add(openBlock)
 blockList.add(openBlock)

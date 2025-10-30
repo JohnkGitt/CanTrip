@@ -7,8 +7,7 @@ from GameObjects.GameObjects import gameObject
 from Cantrip import Cantrip
 
 associationDictionary = {
-    ("Door", "Open"): DoorAttributes.OPEN,      # UPDATE THIS DICTIONARY WITH ALL ASSOCIATIONS
-    ("Door", "Close"): DoorAttributes.CLOSED,
+    ("Door", "Open"): DoorAttributes.OPEN_CLOSED,      # UPDATE THIS DICTIONARY WITH ALL ASSOCIATIONS
     ("CANRobot", "Jump"): PlayerAttributes.JUMP,
     ("CANRobot", "Walk Left"): PlayerAttributes.WALK_LEFT,
     ("CANRobot", "Walk Right"): PlayerAttributes.WALK_RIGHT,
@@ -19,18 +18,20 @@ class Assoc_Block(gameObject):
     def __init__(self, x, y, width, height, text):
         super().__init__(x, y, width, height)
         self.text = text
-        self.pos1Collider = gameObject.__init__(self.x - self.width, self.y, self.width, self.height)
-        self.pos2Collider = gameObject.__init__(self.x, self.y - self.height, self.width, self.height)
-        self.pos3Collider = gameObject.__init__(self.x + self.width, self.y, self.width, self.height)
-        self.pos4Collider = gameObject.__init__(self.x, self.y + self.height, self.width, self.height)
+
+        self.sheet = pygame.image.load('assoc_block.png')
+        self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
+        self.image = self.sheet.subsurface(self.sheet.get_clip())
+
+        self.pos1Collider = gameObject.__init__(self.x - (self.width // 3), self.y, self.width // 3, self.height)
+        self.pos2Collider = gameObject.__init__(self.x, self.y - (self.height // 3), self.width, self.height // 3)
+        self.pos3Collider = gameObject.__init__(self.x + (self.width // 3), self.y, self.width // 3, self.height)
+        self.pos4Collider = gameObject.__init__(self.x, self.y + (self.height // 3), self.width, self.height // 3)
         self.posColliderList = pygame.sprite.Group()
         self.posColliderList = (self.pos1Collider, self.pos2Collider, self.pos3Collider, self.pos4Collider)
         self.associationActive = False
         self.objBlockAssociation = None
         self.attBlockAssociation = None
-
-
-
 
     def update(self):
          # Update collider positions relative to Assoc_Block position
