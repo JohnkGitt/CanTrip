@@ -39,7 +39,7 @@ spriteList.add(doorBlock)
 blockList.add(doorBlock)
 
 #Assoc Block
-assocBlock = Att_Block(550, 620, 80, 80, 2, "is", 1)
+assocBlock = Assoc_Block(550, 620, 80, 80, 2, "is", 1)
 col_list.add(assocBlock)
 spriteList.add(assocBlock)
 blockList.add(assocBlock)
