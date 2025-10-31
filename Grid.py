@@ -36,9 +36,17 @@ def resolveGridPosToScreenCoords(grid_x, grid_y):
     return (x, y)
 
 # Function to draw an image at a specific grid position
-def drawToScreenWithGridPos(screen, grid_x, grid_y, image):
-    screen_coords = resolveGridPosToScreenCoords(grid_x, grid_y)
-    if screen_coords is None:
+# The height and width offset are relative to grid coordinates (i.e., a height offset of 0.5 will draw a tile starting in the middle of a grid square)
+def drawToScreenWithGridPos(screen, grid_x, grid_y, image, height_offset=0, width_offset=0):
+    x, y = resolveGridPosToScreenCoords(grid_x, grid_y)
+    if x is None or y is None:
         return # Invalid grid position
     
-    screen.blit(image, screen_coords)
+    if height_offset == 0 and width_offset == 0:
+        screen.blit(image, (x, y)) # Draw tile to screen as normal
+    else:
+        if height_offset > 1.0 or height_offset < 0.0 or width_offset > 1.0 or width_offset < 0.0:
+            return # Invalid offset(s)
+        x_offset = width_offset * TILE_SIDE_LENGTH       # Calculate x and y pixel offset based on desired tile length
+        y_offset = height_offset * TILE_SIDE_LENGTH
+        screen.blit(image, (x + x_offset, y + y_offset)) # Draw tile to screen with offset
