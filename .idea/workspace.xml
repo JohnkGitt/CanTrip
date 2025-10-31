@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="bg and floor image" />
+    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="tutorial text">
+      <change beforePath="$PROJECT_DIR$/ReadMe.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -196,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761856746542</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="tutorial text">
+      <option name="closed" value="true" />
+      <created>1761869970441</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1761869970441</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,10 +243,11 @@
     <MESSAGE value="assoc collisions" />
     <MESSAGE value="crash fic, reset persists" />
     <MESSAGE value="bg and floor image" />
-    <option name="LAST_COMMIT_MESSAGE" value="bg and floor image" />
+    <MESSAGE value="tutorial text" />
+    <option name="LAST_COMMIT_MESSAGE" value="tutorial text" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CanTrip$Cantrip.coverage" NAME="Cantrip Coverage Results" MODIFIED="1761856696009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CanTrip$Cantrip.coverage" NAME="Cantrip Coverage Results" MODIFIED="1761869926453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CanTrip$Player.coverage" NAME="Player Coverage Results" MODIFIED="1761783650634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GameObjects/player" />
   </component>
 </project>
