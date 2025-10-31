@@ -1,3 +1,5 @@
+run cantrip.py
+
 John Aragon:
     - CanRobot (the player)
     - Door
