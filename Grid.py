@@ -1,12 +1,14 @@
 import pygame
 import Cantrip
 
-SCALE_FACTOR = 1                                     # Constant scale factor for tile size
-TILE_SIDE_LENGTH = 16 * SCALE_FACTOR                 # Side length of each tile in pixels relative to screen
-GRID_WIDTH = Cantrip.screen_w // TILE_SIDE_LENGTH    # Number of tiles that fit horizontally on the screen
-GRID_HEIGHT = Cantrip.screen_h // TILE_SIDE_LENGTH   # Number of tiles that fit vertically on the screen
-MIN_GRID_POS = (0, 0)                                # Minimum grid position
-MAX_GRID_POS = (GRID_WIDTH - 1, GRID_HEIGHT - 1)     # Maximum grid position
+
+ACTUAL_TILE_SIDE_LENGTH = 16                              # Tileset pixels are 16x16
+SCALE_FACTOR = 1                                          # Constant scale factor for tile size
+TILE_SIDE_LENGTH = ACTUAL_TILE_SIDE_LENGTH * SCALE_FACTOR # Side length of each tile in pixels relative to screen
+GRID_WIDTH = Cantrip.screen_w // TILE_SIDE_LENGTH         # Number of tiles that fit horizontally on the screen
+GRID_HEIGHT = Cantrip.screen_h // TILE_SIDE_LENGTH        # Number of tiles that fit vertically on the screen
+MIN_GRID_POS = (0, 0)                                     # Minimum grid position
+MAX_GRID_POS = (GRID_WIDTH - 1, GRID_HEIGHT - 1)          # Maximum grid position
 
 # Functions for converting between screen coordinates and grid positions
 def resolveScreenCoordsToGridPos(x, y):
@@ -37,12 +39,12 @@ def resolveGridPosToScreenCoords(grid_x, grid_y):
 
 # Function to draw an image at a specific grid position
 # The height and width offset are relative to grid coordinates (i.e., a height offset of 0.5 will draw a tile starting in the middle of a grid square)
-def drawToScreenWithGridPos(screen, grid_x, grid_y, image, height_offset=0, width_offset=0):
+def drawToScreenWithGridPos(screen, grid_x, grid_y, image, height_offset=0.0, width_offset=0.0):
     x, y = resolveGridPosToScreenCoords(grid_x, grid_y)
     if x is None or y is None:
         return # Invalid grid position
     
-    if height_offset == 0 and width_offset == 0:
+    if height_offset == 0.0 and width_offset == 0.0:
         screen.blit(image, (x, y)) # Draw tile to screen as normal
     else:
         if height_offset > 1.0 or height_offset < 0.0 or width_offset > 1.0 or width_offset < 0.0:
