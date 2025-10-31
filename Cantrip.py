@@ -8,6 +8,11 @@ from GameObjects.Att_Block.Att_Block import Att_Block
 pygame.init()
 screen_w = 1280
 screen_h = 720
+font = pygame.font.SysFont('arial', 32)
+status_text = "Press [E] to grab/place blocks | [SPACE] to win when in front of an open door"
+more_info = "left and right arrows to move | up arrow to jump | arrange the blocks to make a statement!"
+text_surface = font.render(status_text, True, (255, 255, 255))
+text_surface2 = font.render(more_info, True, (255, 255, 255))
 
 
 bg = pygame.image.load('background 1.jpg')
@@ -78,6 +83,8 @@ while not gameOver:
     screen.fill((0,0,0))
     screen.blit(bg, (0,0))
     screen.blit(ground.image, ground.rect)
+    screen.blit(text_surface, (20, 10))
+    screen.blit(text_surface2, (20, 50))
     if eBufferCounter <= 5:
         eBufferCounter += 1
 
