@@ -4,6 +4,7 @@ from GameObjects.player.Player import PlayerAttributes
 from GameObjects.Obj_Block import Obj_Block
 from GameObjects.Att_Block import Att_Block
 from GameObjects.GameObjects import gameObject
+from GameObjects.GameObjects import RESOURCES_FILEPATH
 
 associationDictionary = {
     ("Door", "Open"): DoorAttributes.OPEN_CLOSED,      # UPDATE THIS DICTIONARY WITH ALL ASSOCIATIONS
@@ -18,7 +19,7 @@ class Assoc_Block(gameObject):
         super().__init__(x, y, width, height, id)
         self.text = text
         self.isGrabbed = False
-        self.sheet = pygame.image.load('assoc_block.png')
+        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}assoc_block.png')
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
         self.image = self.sheet.subsurface(self.sheet.get_clip())
         self.objectList = objList

@@ -1,12 +1,13 @@
 import pygame
 from GameObjects.GameObjects import gameObject
+from GameObjects.GameObjects import RESOURCES_FILEPATH
 
 class Obj_Block(gameObject):
     def __init__(self, x, y, width, height, id, text, target):
         super().__init__(x, y, width, height, id)
         self.text = text
         self.target = target
-        self.sheet = pygame.image.load('obj_block.png')
+        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}obj_block.png')
         self.isGrabbed = False
 
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))

@@ -1,5 +1,6 @@
 import pygame
 from GameObjects.GameObjects import gameObject
+from GameObjects.GameObjects import RESOURCES_FILEPATH
 from enum import Enum
 
 class DoorAttributes(Enum):
@@ -13,7 +14,7 @@ class Door(gameObject):
         self.ID = id
         self.is_open = False
 
-        self.sheet = pygame.image.load('Door.png')
+        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}Door.png')
 
         self.sheet.set_clip(pygame.Rect(1, 0, 35, 36))
 

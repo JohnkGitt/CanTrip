@@ -1,5 +1,6 @@
 import pygame
 from GameObjects.GameObjects import gameObject
+from GameObjects.GameObjects import RESOURCES_FILEPATH
 
 class Att_Block(gameObject):
     def __init__(self, x, y, width, height, id, text, attribute):
@@ -7,7 +8,7 @@ class Att_Block(gameObject):
         self.isGrabbed = False
         self.text = text
         self.att = attribute
-        self.sheet = pygame.image.load('att_block.png')
+        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}att_block.png')
 
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
 

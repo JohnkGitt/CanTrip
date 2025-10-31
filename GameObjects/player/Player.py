@@ -3,6 +3,7 @@ from GameObjects.GameObjects import gameObject
 from enum import Enum
 from GameObjects.Att_Block.Att_Block import Att_Block
 from GameObjects.Obj_Block.Obj_Block import Obj_Block
+from GameObjects.GameObjects import RESOURCES_FILEPATH
 
 class PlayerAttributes(Enum):
     JUMP = 0
@@ -15,7 +16,7 @@ class Player(gameObject):
         super().__init__(x, y, width, height, id)
         self.ID = id
         self.lastFace = ''
-        self.sheet = pygame.image.load('PSprites.png')
+        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}PSprites.png')
         self.width = width
         self.height = height
         self.finalx = 0
