@@ -16,7 +16,7 @@ class Player(gameObject):
         super().__init__(x, y, width, height, id)
         self.ID = id
         self.lastFace = ''
-        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}PSprites.png')
+        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}PSprites_scaled2x.png')
         self.width = width
         self.height = height
         self.finalx = 0
@@ -25,7 +25,7 @@ class Player(gameObject):
         self.grabbed = []
 
         #16x26
-        self.sheet.set_clip(pygame.Rect(0, 0, 16, 26))
+        self.sheet.set_clip(pygame.Rect(0, 0, 32, 52))
 
         self.image = self.sheet.subsurface(self.sheet.get_clip())
         self.rect = self.image.get_rect()
@@ -34,18 +34,18 @@ class Player(gameObject):
 
         self.frame = 0
 
-        self.leftWalkStates = {0:(0, 0, 16, 26), 1:(16, 0, 16, 26), 2:(32, 0, 16, 26), 3:(48, 0, 16, 26),
-                               4:(64, 0, 16, 26), 5:(80, 0, 16, 26), 6:(96, 0, 16, 26), 7:(112, 0, 32, 26)}
+        self.leftWalkStates = {7:(0, 0, 32, 52), 6:(32, 0, 32, 52), 5:(64, 0, 32, 52), 4:(96, 0, 32, 53),
+                               3:(128, 0, 32, 52), 2:(160, 0, 32, 52), 1:(192, 0, 32, 52), 0:(224, 0, 32, 52)}
 
-        self.rightWalkStates = {0:(192, 31, 16, 26), 1:(176, 31, 16, 26), 2:(160, 31, 16, 26), 3:(144, 31, 16, 26),
-                                4:(128, 31, 16, 26), 5:(112, 31, 16, 26), 6:(96, 31, 16, 26), 7:(80, 31, 16, 26)}
+        self.rightWalkStates = {7:(384, 62, 32, 52), 6:(352, 62, 32, 52), 5:(320, 62, 32, 52), 4:(288, 62, 32, 52),
+                                3:(256, 62, 32, 52), 2:(224, 62, 32, 52), 1:(192, 62, 32, 52), 0:(160, 62, 32, 52)}
 
-        self.leftIdleStates = {0:(144, 0, 16, 26), 1:(160, 0, 16, 26), 2:(176, 0, 16, 26), 3:(192, 0, 16, 26)}
+        self.leftIdleStates = {0:(288, 0, 32, 52), 1:(320, 0, 32, 52), 2:(352, 0, 32, 52), 3:(384, 0, 32, 52)}
 
-        self.rightIdleStates = {0:(48, 31, 16, 26), 1:(32, 31, 16, 26), 2:(16, 31, 16, 26), 3:(0, 31, 16, 26)}
+        self.rightIdleStates = {0:(0, 62, 32, 52), 1:(32, 62, 32, 52), 2:(64, 62, 32, 52), 3:(96, 62, 32, 52)}
 
-        self.leftJump = {0:(0, 0, 16, 26)}
-        self.rightJump = {0: (192, 20, 16, 26)}
+        self.leftJump = {0:(0, 0, 32, 52)}
+        self.rightJump = {0: (384, 62, 32, 52)}
 
         self.isJumping = False
         self.jumpCount = 0
