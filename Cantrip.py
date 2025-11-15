@@ -1,9 +1,11 @@
 import pygame
+import os
 from GameObjects.player.Player import Player
 from GameObjects.Door.Door import Door
 from GameObjects.Obj_Block.Obj_Block import Obj_Block
 from GameObjects.Assoc_Block.Assoc_Block import Assoc_Block
 from GameObjects.Att_Block.Att_Block import Att_Block
+
 
 pygame.init()
 screen_w = 1280
@@ -14,15 +16,15 @@ more_info = "left and right arrows to move | up arrow to jump | arrange the bloc
 text_surface = font.render(status_text, True, (255, 255, 255))
 text_surface2 = font.render(more_info, True, (255, 255, 255))
 
-
-bg = pygame.image.load('Resources\\background 1.jpg')
+cwd= os.getcwd()
+bg = pygame.image.load(os.path.join('Resources', 'background 1.jpg'))
 screen = pygame.display.set_mode((screen_w, screen_h))
 pygame.display.set_caption("CanTrip")
 clock = pygame.time.Clock()
 
 ground = pygame.sprite.Sprite()
 ground.rect = pygame.Rect(0, 700, screen_w, 20)
-ground.image = pygame.image.load('Resources\\floor.png')
+ground.image = pygame.image.load(os.path.join('Resources', 'floor.png'))
 
 spriteList = pygame.sprite.Group()
 blockList = pygame.sprite.Group()

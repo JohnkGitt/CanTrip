@@ -1,5 +1,8 @@
+import os
 import pygame
-RESOURCES_FILEPATH = 'Resources\\'
+
+
+RESOURCES_FILEPATH = os.path.join('Resources', '')
 
 class gameObject(pygame.sprite.Sprite):
     def __init__(self, x, y, width, height, id):
