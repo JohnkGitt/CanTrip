@@ -1,5 +1,4 @@
 import pygame
-import os
 from GameObjects.GameObjects import gameObject
 from GameObjects.GameObjects import RESOURCES_FILEPATH
 from enum import Enum
