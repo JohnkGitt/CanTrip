@@ -90,7 +90,7 @@ class Level:
                     self.eBufferCounter = 0
 
             elif keys[pygame.K_SPACE] and self.endDoor.isOpen():
-                if self.canRobot.rect.colliderect(self.canRobot.rect):
+                if self.canRobot.rect.colliderect(self.endDoor.rect):
                     pygame.display.set_caption("win")
                     self.levelBeaten += 1
                     self.gameOver = True
