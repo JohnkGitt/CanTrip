@@ -6,6 +6,8 @@ from GameObjects.Obj_Block.Obj_Block import Obj_Block
 from GameObjects.Assoc_Block.Assoc_Block import Assoc_Block
 from GameObjects.Att_Block.Att_Block import Att_Block
 from Level.Levels.Level_1 import Level_1
+from Level.Levels.Level_2 import Level_2
+
 
 
 pygame.init()
@@ -18,7 +20,7 @@ text_surface = font.render(status_text, True, (255, 255, 255))
 text_surface2 = font.render(more_info, True, (255, 255, 255))
 
 cwd= os.getcwd()
-bg = pygame.image.load(os.path.join('Resources', 'background 1.jpg'))
+bg = pygame.image.load(os.path.join('Resources', 'background 2.jpg'))
 screen = pygame.display.set_mode((screen_w, screen_h))
 pygame.display.set_caption("CanTrip")
 clock = pygame.time.Clock()
@@ -31,7 +33,8 @@ ground.image = pygame.image.load(os.path.join('Resources', 'floor.png'))
 
 firstLV = Level_1(bg, ground, 1, screen)
 firstLV.runLevel()
-
+#secondLV = Level_2(bg, ground, 1, screen)
+#secondLV.runLevel()
 
 
 

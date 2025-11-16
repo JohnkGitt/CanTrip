@@ -19,7 +19,7 @@ class Assoc_Block(gameObject):
         super().__init__(x, y, width, height, id)
         self.text = text
         self.isGrabbed = False
-        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}assoc_block.png')
+        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}IsBlock.png')
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
         self.image = self.sheet.subsurface(self.sheet.get_clip())
         self.objectList = objList
@@ -134,7 +134,7 @@ class Assoc_Block(gameObject):
             if associationPair == assocPair:
                 # If found, resolve pair to a integer that marks a specific change to be made to target object
                 # Resolve object ID to target object within Cantrip game world and call its associated att_Handler method with targetChange
-                self.resolveObjIDtoTargetObj(objBlock.getID()).att_Handler(targetChange)
+                self.resolveObjIDtoTargetObj(objBlock.getTargetID()).att_Handler(targetChange)
                 break
 
     def update2(self, X, Y):

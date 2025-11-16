@@ -11,24 +11,24 @@ class Level_1(Level):
     def __init__(self, background, ground, level_id, screen):
         super().__init__(background, ground, level_id, screen)
 
-        self.canRobot.setPOS(500, 500)
+        self.canRobot.setPOS(500, 200)
         self.endDoor.setPOS(0, 664)
 
 
-        self.doorBlock = Obj_Block(100, 620, 80, 80, 2, "Door", 2)
+        self.doorBlock = Obj_Block(100, 620, 50, 50, 3, "Door", 2)
         self.col_list.add(self.doorBlock)
         self.spriteList.add(self.doorBlock)
         self.blockList.add(self.doorBlock)
         self.all_gameObjects.add(self.doorBlock)
 
         # Assoc Block
-        self.assocBlock = Assoc_Block(550, 620, 80, 80, 3, "is", self.all_gameObjects)
+        self.assocBlock = Assoc_Block(550, 620, 50, 50, 4, "is", self.all_gameObjects)
         self.col_list.add(self.assocBlock)
         self.spriteList.add(self.assocBlock)
         self.blockList.add(self.assocBlock)
         self.all_gameObjects.add(self.assocBlock)
 
-        self.openBlock = Att_Block(1000, 620, 80, 80, 2, "Open", 0)
+        self.openBlock = Att_Block(1000, 620, 50, 50, 5, "Open", 0)
         self.col_list.add(self.openBlock)
         self.spriteList.add(self.openBlock)
         self.blockList.add(self.openBlock)

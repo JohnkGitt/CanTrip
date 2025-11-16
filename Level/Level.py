@@ -10,11 +10,16 @@ class Level:
         self.background = background      # Background image for the level
         self.ground = ground              # Ground sprite for collision detection
         self.level_id = level_id          # Level identifier
-        levelBeaten = 0
+        self.levelBeaten = 0
+
+        #all game objects that arent platforms go here
         self.spriteList = pygame.sprite.Group()
+        #all block objects go here
         self.blockList = pygame.sprite.Group()
+        #all platforms and blovks go here
         self.col_list = pygame.sprite.Group()
         self.col_list.add(ground)
+        #all game objects also go here
         self.all_gameObjects = pygame.sprite.Group()
         self.cur_screen = screen
         self.canRobot = Player(0, 0, 16, 26, 1)
@@ -28,7 +33,7 @@ class Level:
 
     # Resolve object ID to target object
     def resolveObjIDtoTargetObj(self, id):
-        for key, value in self.object_dict.items():
+        for key, value in self.all_gameObjects:
             if key == id:
                 return value
         return None
@@ -52,7 +57,7 @@ class Level:
         while not self.gameOver:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    self.gameOver = True
+                    pygame.quit()
             self.cur_screen.fill((0, 0, 0))
             self.cur_screen.blit(self.background, (0, 0))
             self.cur_screen.blit(self.ground.image, self.ground.rect)
@@ -87,6 +92,8 @@ class Level:
             elif keys[pygame.K_SPACE] and self.endDoor.isOpen():
                 if self.canRobot.rect.colliderect(self.canRobot.rect):
                     pygame.display.set_caption("win")
+                    self.levelBeaten += 1
+                    self.gameOver = True
                     pass
 
             else:
