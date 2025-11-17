@@ -26,6 +26,7 @@ class Assoc_Block(gameObject):
         self.image = self.sheet.subsurface(self.sheet.get_clip())
         self.objectList = objList
 
+        # Collider directly to the left of assoc block
         self.pos1Collider = gameObject(
             x = self.rect.x - (self.width // 3),
             y = self.rect.y,
@@ -33,6 +34,7 @@ class Assoc_Block(gameObject):
             height = self.height,
             id = 1000
             )
+        # Collider directly above assoc block
         self.pos2Collider = gameObject(
             x = self.rect.x,
             y = self.rect.y - (self.height // 3),
@@ -40,13 +42,15 @@ class Assoc_Block(gameObject):
             height = self.height // 3,
             id = 1001
             )
+        # Collider directly to the right of assoc block
         self.pos3Collider = gameObject(
             x = self.rect.x + (self.width // 3), 
             y = self.rect.y,
             width = self.width // 3,
             height = self.height,
             id = 1002
-            )    
+            )
+        # Collider directly below assoc block
         self.pos4Collider = gameObject(
             x = self.rect.x,
             y = self.rect.y + (self.height // 3),
@@ -54,17 +58,10 @@ class Assoc_Block(gameObject):
             height = self.height // 3,
             id = 1003
             )
-        self.associationActive = False
-        self.objBlockAssociation = None
-        self.attBlockAssociation = None
-        self._cantrip = None # Lazy load of Cantrip module to avoid circular import
-
-    def _get_cantrip(self):
-        # Lazy import of Cantrip (only called once)
-        if self._cantrip is None:
-            import Cantrip
-            self._cantrip = Cantrip
-        return self._cantrip
+        self.associationActive = False  # Tracks whether an association is active
+        self.objBlockAssociation = None # Tracks object block colliding with association block
+        self.attBlockAssociation = None # Tracks attribute block colliding with association block
+        self.removeAssociation = False  # Tracks whether an association should be removed
 
     def update(self, collideList):
         self.fall(collideList)
@@ -75,41 +72,34 @@ class Assoc_Block(gameObject):
         self.pos3Collider.setPOS(self.rect.x + self.width, self.rect.y)
         self.pos4Collider.setPOS(self.rect.x, self.rect.y + self.height)
 
-        # Reset
+        # Default: unset associations, we'll reassign if any block is touching
+        prevObjBlock = self.objBlockAssociation
+        prevAttBlock = self.attBlockAssociation
         self.objBlockAssociation = None
         self.attBlockAssociation = None
 
-        # Check only Obj_Block and Att_Block
         for obj in collideList:
-            isObjBlock = isinstance(obj, (Obj_Block.Obj_Block))
-            isAttBlock = isinstance (obj, (Att_Block.Att_Block))
-            if not isObjBlock and not isAttBlock:
-                continue
-
+            isObjBlock = isinstance(obj, Obj_Block.Obj_Block)
+            isAttBlock = isinstance(obj, Att_Block.Att_Block)
             rect = obj.rect
 
-            if self.pos1Collider.rect.colliderect(rect) and isObjBlock:
+            # Assign if a block is currently touching relevant collider
+            if (self.pos1Collider.rect.colliderect(rect) or self.pos2Collider.rect.colliderect(rect)) and isObjBlock:
                 self.objBlockAssociation = obj
-            elif self.pos2Collider.rect.colliderect(rect) and isObjBlock:
-                self.objBlockAssociation = obj
-            elif self.pos3Collider.rect.colliderect(rect) and isAttBlock:
-                self.attBlockAssociation = obj
-            elif self.pos4Collider.rect.colliderect(rect) and isAttBlock:
+            if (self.pos3Collider.rect.colliderect(rect) or self.pos4Collider.rect.colliderect(rect)) and isAttBlock:
                 self.attBlockAssociation = obj
 
-        # Now handle association
+        # Now handle association/deassociation
         if self.objBlockAssociation and self.attBlockAssociation:
             if self.prox_Check(self.objBlockAssociation, self.attBlockAssociation):
                 if not self.associationActive:
                     self.assoc_Handler(self.objBlockAssociation, self.attBlockAssociation)
                     self.associationActive = True
-            else:
-                if self.associationActive:
-                    self.assoc_Handler(self.objBlockAssociation, self.attBlockAssociation)  # deactivate
-                    self.associationActive = False
-                    self.objBlockAssociation = None
-                    self.attBlockAssociation = None
-
+        else:
+            # If any block moved away, association is broken
+            if self.associationActive:
+                self.assoc_Handler(prevObjBlock, prevAttBlock)
+                self.associationActive = False
 
     def get_text(self):
         return self.text
@@ -129,7 +119,6 @@ class Assoc_Block(gameObject):
         return 0
     
     def assoc_Handler(self, objBlock, attBlock):
-        #Cantrip = self._get_cantrip()  # This will need to be changed. The associated objID to object resolution will take place in a separate class in the future
         associationPair = (objBlock.get_text(), attBlock.get_text())
         targetChange = None
         
