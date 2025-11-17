@@ -1,9 +1,14 @@
 import pygame
+import os
 from GameObjects.GameObjects import gameObject
 from enum import Enum
 from GameObjects.Att_Block.Att_Block import Att_Block
 from GameObjects.Obj_Block.Obj_Block import Obj_Block
 from GameObjects.GameObjects import RESOURCES_FILEPATH
+
+
+RESOURCES_FILEPATH = os.path.join('Resources', '')
+
 
 class PlayerAttributes(Enum):
     JUMP = 0
@@ -50,6 +55,10 @@ class Player(gameObject):
         self.isJumping = False
         self.jumpCount = 0
 
+        self.jumpSound = pygame.mixer.Sound(f'{RESOURCES_FILEPATH}jump.mp3')
+        self.grabSound = pygame.mixer.Sound(f'{RESOURCES_FILEPATH}grab.mp3')
+        self.placeSound = pygame.mixer.Sound(f'{RESOURCES_FILEPATH}place.mp3')
+
     def get_frame(self, frame_set):
             self.frame += 1
             if self.frame > (len(frame_set) - 1):
@@ -71,15 +80,22 @@ class Player(gameObject):
             if not self.onGround(collideList):
                 self.rect.y += 5
             if self.isJumping:
+                roof = self.top_collide(collideList)
                 if self.jumpCount == 20:
                     self.jumpCount = 0
                     self.isJumping = False
                 if self.jumpCount > 14:
+                    if roof < 12:
+                        self.rect.y -= roof
+                    else:
+                        self.rect.y -= 12
                     self.jumpCount += 1
-                    self.rect.y -= 9
                 else:
+                    if roof < 15:
+                        self.rect.y -= roof
+                    else:
+                        self.rect.y -= 15
                     self.jumpCount += 1
-                    self.rect.y -= 12
             if direction == 'left':
                 self.clip(self.leftWalkStates)
                 self.rect.x -= self.left_collide(collideList)
@@ -132,9 +148,23 @@ class Player(gameObject):
             count += 1
         return 5
 
+    def top_collide(self, collideList):
+        count = 0
+        smallest = 21
+        for sprite in collideList:
+            if count > 0:
+                dif = self.rect.top - sprite.rect.bottom
+                cond1 = smallest > dif >= 0
+                cond2 = self.rect.left < sprite.rect.right and sprite.rect.left < self.rect.right
+                if cond1 and cond2:
+                    smallest = dif
+            count += 1
+        return smallest
+
     def jump(self, collideList):
         if not(self.isJumping) and self.onGround(collideList):
             self.isJumping = True
+            self.jumpSound.play()
 
 
     def getID(self):
@@ -154,6 +184,7 @@ class Player(gameObject):
         return self.finalx, self.finaly
 
     def grab(self, blockGroup, collideGroup):
+        self.grabSound.play()
         if self.lastFace == 'left':
             self.grabCollider = pygame.Rect(self.rect.x - 20, self.rect.y, 20, self.rect.height)
             for block  in blockGroup:
@@ -180,11 +211,12 @@ class Player(gameObject):
             self.grabbed[0].rect.x = self.rect.left - 10 - self.grabbed[0].rect.width
         elif self.lastFace == 'right':
             self.grabbed[0].rect.x = self.rect.right + 10
-        self.grabbed[0].rect.bottom = self.rect.bottom
+        self.grabbed[0].rect.bottom = self.rect.bottom - 9
         self.grabbed[0].collide_adjust(collideList)
         collideList.add(self.grabbed[0])
         self.grabbed[0].changeGrabbed()
         self.grabbed.pop()
+        self.placeSound.play()
 
     def getID(self):
         return self.ID

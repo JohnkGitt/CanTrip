@@ -7,7 +7,7 @@ class Obj_Block(gameObject):
         super().__init__(x, y, width, height, id)
         self.text = text
         self.target = target
-        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}obj_block.png')
+        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}DoorBlock.png')
         self.isGrabbed = False
 
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
@@ -55,5 +55,8 @@ class Obj_Block(gameObject):
                     self.rect.x += ldiff
                 else:
                     self.rect.x += rdiff
+
+    def getTargetID(self):
+        return self.target
 
 
