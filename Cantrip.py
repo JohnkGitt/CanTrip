@@ -50,8 +50,8 @@ ground = pygame.sprite.Sprite()
 ground.rect = pygame.Rect(0, 700, screen_w, 20)
 ground.image = pygame.image.load(os.path.join('Resources', 'floor.png'))
 
-firstLV = Level_1(bg, ground, 1, screen)
-firstLV.runLevel()
+#firstLV = Level_1(bg, ground, 1, screen)
+#firstLV.runLevel()
 
 secondLV = Level_2(bg, ground, 2, screen)
 secondLV.runLevel()

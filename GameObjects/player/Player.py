@@ -79,7 +79,7 @@ class Player(gameObject):
             finalx = self.rect.x
             finaly = self.rect.y
 
-            self.fall(collideList)
+            self.rect.y += self.bottom_collide(collideList)
             if self.isJumping:
                 roof = self.top_collide(collideList)
                 if self.jumpCount == 20:
@@ -156,8 +156,19 @@ class Player(gameObject):
             count += 1
         return smallest
 
+    def bottom_collide(self, collideList):
+        count = 0
+        smallest = 5
+        for sprite in collideList:
+                dif =  sprite.rect.top - self.rect.bottom
+                cond1 = smallest > dif >= 0
+                cond2 = self.rect.left < sprite.rect.right and sprite.rect.left < self.rect.right
+                if cond1 and cond2:
+                    smallest = dif
+        return smallest
+
     def jump(self, collideList):
-        if not(self.isJumping) and self.onGround(collideList):
+        if not(self.isJumping) and self.bottom_collide(collideList)  == 0:
             self.isJumping = True
             self.jumpSound.play()
 
@@ -215,4 +226,6 @@ class Player(gameObject):
 
     def getID(self):
         return self.ID
+
+
 
