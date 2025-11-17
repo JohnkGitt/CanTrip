@@ -80,15 +80,22 @@ class Player(gameObject):
             if not self.onGround(collideList):
                 self.rect.y += 5
             if self.isJumping:
+                roof = self.top_collide(collideList)
                 if self.jumpCount == 20:
                     self.jumpCount = 0
                     self.isJumping = False
                 if self.jumpCount > 14:
+                    if roof < 12:
+                        self.rect.y -= roof
+                    else:
+                        self.rect.y -= 12
                     self.jumpCount += 1
-                    self.rect.y -= 12
                 else:
+                    if roof < 15:
+                        self.rect.y -= roof
+                    else:
+                        self.rect.y -= 15
                     self.jumpCount += 1
-                    self.rect.y -= 15
             if direction == 'left':
                 self.clip(self.leftWalkStates)
                 self.rect.x -= self.left_collide(collideList)
@@ -140,6 +147,19 @@ class Player(gameObject):
                     return dif
             count += 1
         return 5
+
+    def top_collide(self, collideList):
+        count = 0
+        smallest = 21
+        for sprite in collideList:
+            if count > 0:
+                dif = self.rect.top - sprite.rect.bottom
+                cond1 = smallest > dif >= 0
+                cond2 = self.rect.left < sprite.rect.right and sprite.rect.left < self.rect.right
+                if cond1 and cond2:
+                    smallest = dif
+            count += 1
+        return smallest
 
     def jump(self, collideList):
         if not(self.isJumping) and self.onGround(collideList):
