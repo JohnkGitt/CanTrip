@@ -24,3 +24,10 @@ Bode Hooker:
     - Base functionality for GameObjects.py
         - GameObjects.py acts as an interface for all objects in our game, requiring (x,y) coordinates, width, height, and a unique including
 
+
+
+Music Credits:
+
+mewmew by Tea K Pea
+
+ZapSplat for SFX

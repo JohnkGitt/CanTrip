@@ -3,7 +3,7 @@ import os
 from GameObjects.player.Player import Player
 from GameObjects.Door.Door import Door
 
-
+RESOURCES_FILEPATH = os.path.join('Resources', '')
 
 class Level:
     def __init__(self, background, ground, level_id, screen):
@@ -31,6 +31,7 @@ class Level:
         self.eBufferCounter = 0
         self.clock = pygame.time.Clock()
 
+
     # Resolve object ID to target object
     def resolveObjIDtoTargetObj(self, id):
         for key, value in self.all_gameObjects:
@@ -54,6 +55,10 @@ class Level:
 
 
     def runLevel(self):
+        pygame.mixer.music.load(f'{RESOURCES_FILEPATH}Tea K Pea - mewmew.mp3')
+        pygame.mixer.music.play(loops=-1)
+
+
         while not self.gameOver:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

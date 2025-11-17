@@ -1,9 +1,14 @@
 import pygame
+import os
 from GameObjects.GameObjects import gameObject
 from enum import Enum
 from GameObjects.Att_Block.Att_Block import Att_Block
 from GameObjects.Obj_Block.Obj_Block import Obj_Block
 from GameObjects.GameObjects import RESOURCES_FILEPATH
+
+
+RESOURCES_FILEPATH = os.path.join('Resources', '')
+
 
 class PlayerAttributes(Enum):
     JUMP = 0
@@ -50,6 +55,8 @@ class Player(gameObject):
         self.isJumping = False
         self.jumpCount = 0
 
+        self.jumpSound = pygame.mixer.Sound(f'{RESOURCES_FILEPATH}jump.mp3')
+
     def get_frame(self, frame_set):
             self.frame += 1
             if self.frame > (len(frame_set) - 1):
@@ -76,10 +83,10 @@ class Player(gameObject):
                     self.isJumping = False
                 if self.jumpCount > 14:
                     self.jumpCount += 1
-                    self.rect.y -= 9
+                    self.rect.y -= 12
                 else:
                     self.jumpCount += 1
-                    self.rect.y -= 12
+                    self.rect.y -= 15
             if direction == 'left':
                 self.clip(self.leftWalkStates)
                 self.rect.x -= self.left_collide(collideList)
@@ -135,6 +142,7 @@ class Player(gameObject):
     def jump(self, collideList):
         if not(self.isJumping) and self.onGround(collideList):
             self.isJumping = True
+            self.jumpSound.play()
 
 
     def getID(self):

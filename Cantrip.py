@@ -11,6 +11,7 @@ from Level.Levels.Level_2 import Level_2
 
 
 pygame.init()
+pygame.mixer.init()
 screen_w = 1280
 screen_h = 720
 font = pygame.font.SysFont('arial', 32)
@@ -33,8 +34,8 @@ ground.image = pygame.image.load(os.path.join('Resources', 'floor.png'))
 
 firstLV = Level_1(bg, ground, 1, screen)
 firstLV.runLevel()
-#secondLV = Level_2(bg, ground, 1, screen)
-#secondLV.runLevel()
+secondLV = Level_2(bg, ground, 1, screen)
+secondLV.runLevel()
 
 
 

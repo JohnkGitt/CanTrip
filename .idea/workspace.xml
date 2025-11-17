@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="Cross OS usability">
-      <change afterPath="$PROJECT_DIR$/Level/Levels/Level_2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/DoorBlock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/IsBlock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/OpenBlock.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/background 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Tea K Pea - mewmew.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/grab.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/jump.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/place.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cantrip.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cantrip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameObjects/Assoc_Block/Assoc_Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Assoc_Block/Assoc_Block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameObjects/Att_Block/Att_Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Att_Block/Att_Block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameObjects/Obj_Block/Obj_Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/Obj_Block/Obj_Block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameObjects/player/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/player/Player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Level/Level.py" beforeDir="false" afterPath="$PROJECT_DIR$/Level/Level.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Level/Levels/Level_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Level/Levels/Level_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadMe.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/OpenBlock.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/OpenBlock.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
