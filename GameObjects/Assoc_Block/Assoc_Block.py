@@ -15,8 +15,10 @@ associationDictionary = {
 }
 
 class Assoc_Block(gameObject):
-    def __init__(self, x, y, width, height, id, text, objList):
-        super().__init__(x, y, width, height, id)
+    def __init__(self, x, y, width, height, id, text, objList, has_physics=True, grabbable=True):
+        self.has_physics = has_physics
+        self.grabbable = grabbable
+        super().__init__(x, y, width, height, id, has_physics=has_physics, grabbable=grabbable)
         self.text = text
         self.isGrabbed = False
         self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}IsBlock.png')
@@ -65,7 +67,9 @@ class Assoc_Block(gameObject):
         return self._cantrip
 
     def update(self, collideList):
-         # Update pos colliders
+        self.fall(collideList)
+
+        # Update pos colliders
         self.pos1Collider.setPOS(self.rect.x - self.width, self.rect.y)
         self.pos2Collider.setPOS(self.rect.x, self.rect.y - self.height)
         self.pos3Collider.setPOS(self.rect.x + self.width, self.rect.y)
