@@ -80,7 +80,6 @@ class Assoc_Block(gameObject):
             rect = obj.rect
 
             # Assign if a block is currently touching relevant collider
-            # These may overwrite if multiples are present - adjust logic if needed!
             if (self.pos1Collider.rect.colliderect(rect) or self.pos2Collider.rect.colliderect(rect)) and isObjBlock:
                 self.objBlockAssociation = obj
             if (self.pos3Collider.rect.colliderect(rect) or self.pos4Collider.rect.colliderect(rect)) and isAttBlock:
@@ -95,7 +94,6 @@ class Assoc_Block(gameObject):
         else:
             # If any block moved away, association is broken
             if self.associationActive:
-                # reverse association using whatever method assoc_Handler uses (make sure to handle None safely in handler!)
                 self.assoc_Handler(prevObjBlock, prevAttBlock)
                 self.associationActive = False
 
