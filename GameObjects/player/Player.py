@@ -56,6 +56,8 @@ class Player(gameObject):
         self.jumpCount = 0
 
         self.jumpSound = pygame.mixer.Sound(f'{RESOURCES_FILEPATH}jump.mp3')
+        self.grabSound = pygame.mixer.Sound(f'{RESOURCES_FILEPATH}grab.mp3')
+        self.placeSound = pygame.mixer.Sound(f'{RESOURCES_FILEPATH}place.mp3')
 
     def get_frame(self, frame_set):
             self.frame += 1
@@ -162,6 +164,7 @@ class Player(gameObject):
         return self.finalx, self.finaly
 
     def grab(self, blockGroup, collideGroup):
+        self.grabSound.play()
         if self.lastFace == 'left':
             self.grabCollider = pygame.Rect(self.rect.x - 20, self.rect.y, 20, self.rect.height)
             for block  in blockGroup:
@@ -188,11 +191,12 @@ class Player(gameObject):
             self.grabbed[0].rect.x = self.rect.left - 10 - self.grabbed[0].rect.width
         elif self.lastFace == 'right':
             self.grabbed[0].rect.x = self.rect.right + 10
-        self.grabbed[0].rect.bottom = self.rect.bottom
+        self.grabbed[0].rect.bottom = self.rect.bottom - 9
         self.grabbed[0].collide_adjust(collideList)
         collideList.add(self.grabbed[0])
         self.grabbed[0].changeGrabbed()
         self.grabbed.pop()
+        self.placeSound.play()
 
     def getID(self):
         return self.ID
