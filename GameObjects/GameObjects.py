@@ -39,15 +39,13 @@ class gameObject(pygame.sprite.Sprite):
         return False
     
     def fall(self, collideList):
-        if not self.grabbable:
-            pass
         if not self.has_physics:
-            pass
+            return
 
         if not self.onGround(collideList) and not self.isGrabbed:
             self.rect.y += 5
         else:
-            pass
+            return
     
 
 
