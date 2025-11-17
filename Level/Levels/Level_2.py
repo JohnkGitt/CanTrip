@@ -1,10 +1,14 @@
 import pygame
+import os
 from Level.Level import Level
 from GameObjects.player.Player import Player
 from GameObjects.Door.Door import Door
 from GameObjects.Obj_Block.Obj_Block import Obj_Block
 from GameObjects.Assoc_Block.Assoc_Block import Assoc_Block
 from GameObjects.Att_Block.Att_Block import Att_Block
+from GameObjects.platform.platform import platform
+
+RESOURCES_FILEPATH = os.path.join('Resources', '')
 
 
 class Level_2(Level):
@@ -14,20 +18,27 @@ class Level_2(Level):
         self.canRobot.setPOS(500, 200)
         self.endDoor.setPOS(0, 664)
 
-        self.plat1 = pygame.sprite.Sprite()
-        self.plat1.rect = pygame.Rect(980, 400, 300, 40)
-        self.plat1.image = pygame.Surface((300, 40))
-        self.plat1.image.fill((255, 0, 0))
+        self.plat1 = platform(980, 400, 80, 40, 10)
         self.col_list.add(self.plat1)
         self.spriteList.add(self.plat1)
 
-        self.plat2 = pygame.sprite.Sprite()
-        self.plat2.rect = pygame.Rect(850, 500, 100, 40)
-        self.plat2.image = pygame.Surface((100, 40))
-        self.plat2.image.fill((255, 0, 0))
+        self.plat2 = platform(1060, 400, 80, 40, 10)
         self.col_list.add(self.plat2)
         self.spriteList.add(self.plat2)
 
+        self.plat2 = platform(1140, 400, 80, 40, 10)
+        self.col_list.add(self.plat2)
+        self.spriteList.add(self.plat2)
+        self.plat3 = platform(1220, 400, 80, 40, 10)
+        self.col_list.add(self.plat3)
+        self.spriteList.add(self.plat3)
+
+        self.plat4 = platform(900, 500, 80, 40, 10)
+        self.col_list.add(self.plat4)
+        self.spriteList.add(self.plat4)
+        self.plat5 = platform(820, 500, 80, 40, 10)
+        self.col_list.add(self.plat5)
+        self.spriteList.add(self.plat5)
 
 
         self.doorBlock = Obj_Block(100, 620, 50, 50, 3, "Door", 2)
