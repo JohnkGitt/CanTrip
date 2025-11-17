@@ -7,9 +7,10 @@ class DoorAttributes(Enum):
     OPEN_CLOSED = 0
 
 class Door(gameObject):
-    def __init__(self, x, y,  width, height, id):
-
-        super().__init__(x, y, width, height, id)
+    def __init__(self, x, y,  width, height, id, has_physics=False, grabbable=False):
+        self.has_physics = has_physics
+        self.grabbable = grabbable
+        super().__init__(x, y, width, height, id, has_physics=has_physics, grabbable=grabbable)
         self.frame = 0
         self.ID = id
         self.is_open = False

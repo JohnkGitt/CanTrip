@@ -5,7 +5,7 @@ import pygame
 RESOURCES_FILEPATH = os.path.join('Resources', '')
 
 class gameObject(pygame.sprite.Sprite):
-    def __init__(self, x, y, width, height, id):
+    def __init__(self, x, y, width, height, id, has_physics=False, grabbable=False):
         super().__init__()
         self.width = width
         self.height = height
@@ -15,6 +15,9 @@ class gameObject(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.id = id
+        self.isGrabbed = False
+        self.has_physics = has_physics
+        self.grabbable = grabbable
     
     def getID(self):
         return self.id
@@ -28,6 +31,21 @@ class gameObject(pygame.sprite.Sprite):
 
     def getPOS(self):
         return (self.rect.x, self.rect.y)
+    
+    def onGround(self, collideList):
+        for sprite in collideList:
+            if self.rect.colliderect(sprite.rect) and self != sprite:
+                return True
+        return False
+    
+    def fall(self, collideList):
+        if not self.has_physics:
+            return
+
+        if not self.onGround(collideList) and not self.isGrabbed:
+            self.rect.y += 5
+        else:
+            return
     
 
 

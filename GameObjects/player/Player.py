@@ -17,8 +17,10 @@ class PlayerAttributes(Enum):
     GRAB = 3
 
 class Player(gameObject):
-    def __init__(self, x, y, width, height, id):
-        super().__init__(x, y, width, height, id)
+    def __init__(self, x, y, width, height, id, has_physics=True, grabbable=False):
+        self.has_physics = has_physics
+        self.grabbable = grabbable
+        super().__init__(x, y, width, height, id, has_physics=has_physics, grabbable=grabbable)
         self.ID = id
         self.lastFace = ''
         self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}PSprites_scaled2x.png')
@@ -77,8 +79,7 @@ class Player(gameObject):
             finalx = self.rect.x
             finaly = self.rect.y
 
-            if not self.onGround(collideList):
-                self.rect.y += 5
+            self.fall(collideList)
             if self.isJumping:
                 roof = self.top_collide(collideList)
                 if self.jumpCount == 20:
@@ -117,12 +118,6 @@ class Player(gameObject):
                 self.grabbed[0].update2(finalx, finaly)
 
             self.image = self.sheet.subsurface(self.sheet.get_clip())
-
-    def onGround(self, collideList):
-        for sprite in collideList:
-            if self.rect.colliderect(sprite.rect):
-                return True
-        return False
 
     def left_collide(self, collideList):
         count = 0
