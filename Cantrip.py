@@ -21,7 +21,8 @@ screen = pygame.display.set_mode((screen_w, screen_h))
 # Load menu assets and create menu
 bg = pygame.image.load(os.path.join('Resources', 'background 2.jpg'))
 controls_text = "Controls:\n- Use the [ARROW KEYS] to move and jump\n- Press [E] to grab and place blocks\n- Arrange blocks to form statements (e.g. \"Door is Open\")\n- Reach the door and hit [SPACE] to proceed to the next level!\n- Escape the factory to win!"
-menu = Menu(screen, ["Start", "How To Play", "Quit"], "CANTrip", bg=bg)
+menu = Menu(screen, ["Start", "How To Play", "Quit"], "CANTrip", bg=bg, font='arial')
+controls_menu = Menu(screen, ["Back"], "How To Play", controls_text, bg=bg, font='arial', additional_text_size=24)
 inMenu = True
 
 # Main menu loop
@@ -33,7 +34,6 @@ while (inMenu):
         exit()
     # If choice is "How To Play"
     elif choice == 1:
-        controls_menu = Menu(screen, ["Back"], "How To Play", controls_text, bg=bg)
         back_choice = controls_menu.run()
         if back_choice is None:
             pygame.quit()

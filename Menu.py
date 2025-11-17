@@ -4,15 +4,16 @@ WHITE = (255, 255, 255)
 BLUE = (0, 128, 255)
 
 class Menu:
-    def __init__(self, screen, options, title, additional_text=None, bg=None, font=None, font_size=48, bg_color=BLACK, text_color=WHITE, highlight_color=BLUE, title_size=120, title_color=WHITE):
+    def __init__(self, screen, options, title, additional_text=None, additional_text_size=24, bg=None, font=None, font_size=48, bg_color=BLACK, text_color=WHITE, highlight_color=BLUE, title_size=120, title_color=WHITE):
         # Initialize menu attributes
         self.screen = screen
         self.options = options
         self.selected = 0 # Currently selected option
-        self.font = pygame.font.SysFont(font, font_size)
+        self.option_font = pygame.font.SysFont(font, font_size)
 
         # Defaults
         self.additional_text = additional_text   # Optional additional text to display
+        self.additional_font = pygame.font.SysFont(font, additional_text_size)
         self.title_font = pygame.font.SysFont(font, title_size, bold=True)
         self.bg = bg
         self.bg_color = bg_color
@@ -42,7 +43,7 @@ class Menu:
         self.screen.blit(title_surf, title_rect)
 
         # Calculate start position for menu options
-        total_h = len(self.options) * self.font.get_height()
+        total_h = len(self.options) * self.option_font.get_height()
         start_y = h // 3
 
         # Tracks mouse movement
@@ -53,8 +54,8 @@ class Menu:
         for i, opt in enumerate(self.options):
             color = self.text_color
             # Default state for button highlight
-            text_surf = self.font.render(opt, True, color)
-            text_rect = text_surf.get_rect(center=(w // 2, start_y + i * self.font.get_height() * 2))
+            text_surf = self.option_font.render(opt, True, color)
+            text_rect = text_surf.get_rect(center=(w // 2, start_y + i * self.option_font.get_height() * 1.2))
             self.button_rects.append(text_rect)
 
             # Highlight if mouse is over OR selected by keyboard
@@ -64,20 +65,20 @@ class Menu:
             elif i == self.selected:
                 color = self.highlight_color
 
-            text_surf = self.font.render(opt, True, color)
+            text_surf = self.option_font.render(opt, True, color)
             self.screen.blit(text_surf, text_rect)
 
         # Draw additional text if provided (works with newlines and tabs)
         if self.additional_text:
             lines = self.additional_text.split('\n')
-            line_height = self.font.get_height()
+            line_height = self.additional_font.get_height()
             total_text_height = len(lines) * line_height
             start_y = h - h // 6 - total_text_height // 2
 
             for idx, line in enumerate(lines):
                 # Replace tabs with spaces for display
                 text = line.replace('\t', '    ')
-                add_surf = self.font.render(text, True, self.text_color)
+                add_surf = self.additional_font.render(text, True, self.text_color)
                 add_rect = add_surf.get_rect(center=(w // 2, start_y + idx * line_height))
                 self.screen.blit(add_surf, add_rect)
         pygame.display.flip()
