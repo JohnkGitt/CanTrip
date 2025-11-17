@@ -42,13 +42,6 @@ while (inMenu):
     else:
         inMenu = False
 
-
-font = pygame.font.SysFont('arial', 32)
-status_text = "Press [E] to grab/place blocks | [SPACE] to win when in front of an open door"
-more_info = "left and right arrows to move | up arrow to jump | arrange the blocks to make a statement!"
-text_surface = font.render(status_text, True, (255, 255, 255))
-text_surface2 = font.render(more_info, True, (255, 255, 255))
-
 cwd= os.getcwd()
 pygame.display.set_caption("CanTrip")
 clock = pygame.time.Clock()
@@ -57,15 +50,11 @@ ground = pygame.sprite.Sprite()
 ground.rect = pygame.Rect(0, 700, screen_w, 20)
 ground.image = pygame.image.load(os.path.join('Resources', 'floor.png'))
 
-
-
 firstLV = Level_1(bg, ground, 1, screen)
 firstLV.runLevel()
-secondLV = Level_2(bg, ground, 1, screen)
+
+secondLV = Level_2(bg, ground, 2, screen)
 secondLV.runLevel()
-
-
-
 
 pygame.quit()
 

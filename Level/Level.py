@@ -10,7 +10,6 @@ class Level:
         self.background = background      # Background image for the level
         self.ground = ground              # Ground sprite for collision detection
         self.level_id = level_id          # Level identifier
-        self.levelBeaten = 0
 
         #all game objects that arent platforms go here
         self.spriteList = pygame.sprite.Group()
@@ -45,14 +44,6 @@ class Level:
     
     def getObjects(self):
         return self.object_dict
-    
-    def isLevelBeaten(self):
-        return self.levelBeaten
-    
-    def setLeveLBeaten(self, levelBeaten):
-        self.levelBeaten = levelBeaten
-
-
 
     def runLevel(self):
         pygame.mixer.music.load(f'{RESOURCES_FILEPATH}Tea K Pea - mewmew.mp3')
@@ -63,7 +54,8 @@ class Level:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
-            self.cur_screen.fill((0, 0, 0))
+                    exit()
+
             self.cur_screen.blit(self.background, (0, 0))
             self.cur_screen.blit(self.ground.image, self.ground.rect)
             if self.eBufferCounter <= 5:
