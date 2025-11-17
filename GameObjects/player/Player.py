@@ -29,6 +29,8 @@ class Player(gameObject):
         self.finalx = 0
         self.finaly = 0
 
+        self.canJump = True
+
         self.grabbed = []
 
         #16x26
@@ -109,7 +111,7 @@ class Player(gameObject):
                 self.clip(self.leftIdleStates)
             if direction == 'stand_right':
                 self.clip(self.rightIdleStates)
-            if direction == 'up':
+            if direction == 'up' and self.canJump:
                 self.jump(collideList)
             finalx = finalx - self.rect.x
             finaly = finaly - self.rect.y
@@ -226,6 +228,11 @@ class Player(gameObject):
 
     def getID(self):
         return self.ID
+
+
+    def att_handler(self, target):
+        if target == PlayerAttributes.JUMP:
+            self.canJump = not self.canJump
 
 
 
