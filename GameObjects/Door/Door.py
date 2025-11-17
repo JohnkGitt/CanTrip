@@ -22,9 +22,9 @@ class Door(gameObject):
         self.image = self.sheet.subsurface(self.sheet.get_clip())
         self.rect = self.image.get_rect()
 
-        self.closed =(1, 0, 35, 36)
+        self.closed =(2, 0, 58, 60)
 
-        self.opened = (155, 0, 35, 36)
+        self.opened = (258, 0, 58, 60)
 
         self.rect.topleft = (x, y)
 

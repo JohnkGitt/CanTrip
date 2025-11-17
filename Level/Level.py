@@ -22,7 +22,7 @@ class Level:
         self.all_gameObjects = pygame.sprite.Group()
         self.cur_screen = screen
         self.canRobot = Player(0, 0, 16, 26, 1)
-        self.endDoor = Door(0, 0, 35, 36, 2)
+        self.endDoor = Door(0, 0, 58, 60, 2)
         self.spriteList.add(self.endDoor)
         self.all_gameObjects.add(self.endDoor)
         self.all_gameObjects.add(self.canRobot)

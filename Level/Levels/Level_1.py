@@ -12,7 +12,7 @@ class Level_1(Level):
         super().__init__(background, ground, level_id, screen)
 
         self.canRobot.setPOS(500, 200)
-        self.endDoor.setPOS(0, 664)
+        self.endDoor.setPOS(10, 640)
 
 
         self.doorBlock = Obj_Block(100, 620, 50, 50, 3, "Door", 2)

@@ -5,6 +5,11 @@ John Aragon:
     - Door
     - Obj Blocks
     - Attribute Blocks
+    - resizing objects
+    - collision logic
+    - level design and structure
+    - sounds
+
 
 Bode Hooker:
     - Bug fixing Assoc_Block.py 
