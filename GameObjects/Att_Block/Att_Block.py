@@ -3,8 +3,10 @@ from GameObjects.GameObjects import gameObject
 from GameObjects.GameObjects import RESOURCES_FILEPATH
 
 class Att_Block(gameObject):
-    def __init__(self, x, y, width, height, id, text, attribute):
-        super().__init__(x, y, width, height, id)
+    def __init__(self, x, y, width, height, id, text, attribute, has_physics=True, grabbable=True):
+        self.has_physics = has_physics
+        self.grabbable = grabbable
+        super().__init__(x, y, width, height, id, has_physics=has_physics, grabbable=grabbable)
         self.isGrabbed = False
         self.text = text
         self.att = attribute
@@ -23,15 +25,8 @@ class Att_Block(gameObject):
     def set_text(self, text):
         self.text = text
 
-    def onGround(self, collideList):
-            for sprite in collideList:
-                if self.rect.colliderect(sprite.rect) and self != sprite:
-                    return True
-            return False
-
     def update(self, collideList):
-        if not self.onGround(collideList) and not self.isGrabbed:
-            self.rect.y += 5
+        self.fall(collideList)
 
     def update2(self, X, Y):
             self.rect.x -= X
