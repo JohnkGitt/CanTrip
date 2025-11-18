@@ -230,9 +230,13 @@ class Player(gameObject):
         return self.ID
 
 
-    def att_handler(self, target):
+    def att_Handler(self, target):
         if target == PlayerAttributes.JUMP:
             self.canJump = not self.canJump
+
+
+    def noJumping(self):
+        self.canJump = False
 
 
 

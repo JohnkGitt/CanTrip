@@ -7,6 +7,7 @@ from GameObjects.Assoc_Block.Assoc_Block import Assoc_Block
 from GameObjects.Att_Block.Att_Block import Att_Block
 from Level.Levels.Level_1 import Level_1
 from Level.Levels.Level_2 import Level_2
+from Level.Levels.Level_3 import Level_3
 from Menu import Menu
 
 # Intialize Pygame
@@ -55,6 +56,9 @@ firstLV.runLevel()
 
 secondLV = Level_2(bg, ground, 2, screen)
 secondLV.runLevel()
+
+thirdLV = Level_3(bg, ground, 3, screen)
+thirdLV.runLevel()
 
 pygame.quit()
 

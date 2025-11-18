@@ -9,7 +9,10 @@ class Obj_Block(gameObject):
         super().__init__(x, y, width, height, id, has_physics=has_physics, grabbable=grabbable)
         self.text = text
         self.target = target
-        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}DoorBlock.png')
+        if text == "Door":
+            self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}DoorBlock.png')
+        elif text == "CANRobot":
+            self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}BotBlock.jpg')
         self.isGrabbed = False
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
         self.image = self.sheet.subsurface(self.sheet.get_clip())

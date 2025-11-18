@@ -21,7 +21,10 @@ class Assoc_Block(gameObject):
         super().__init__(x, y, width, height, id, has_physics=has_physics, grabbable=grabbable)
         self.text = text
         self.isGrabbed = False
-        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}IsBlock.png')
+        if text == "is":
+            self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}IsBlock.png')
+        elif text == "can":
+            self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}CanBlock.jpg')
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
         self.image = self.sheet.subsurface(self.sheet.get_clip())
         self.objectList = objList

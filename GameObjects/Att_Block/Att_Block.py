@@ -10,7 +10,10 @@ class Att_Block(gameObject):
         self.isGrabbed = False
         self.text = text
         self.att = attribute
-        self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}OpenBlock.jpg')
+        if text == "Open":
+            self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}OpenBlock.jpg')
+        elif text == "Jump":
+            self.sheet = pygame.image.load(f'{RESOURCES_FILEPATH}Jumpblock.jpg')
 
         self.sheet.set_clip(pygame.Rect(0, 0, 80, 80))
 
