@@ -18,6 +18,11 @@ class Level_3(Level):
         self.canRobot.setPOS(1000, 600)
         self.endDoor.open_door()
 
+        self.level_instructions = [
+            "Looks like the facility is trying to stop you from progressing by disabling your jump function.",
+            "Luckily, there are blocks that can help you regain this ability!",
+        ]
+
         self.plat1 = platform(10, 600, 80, 40, 10)
         self.col_list.add(self.plat1)
         self.spriteList.add(self.plat1)

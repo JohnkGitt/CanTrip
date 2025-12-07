@@ -11,8 +11,13 @@ class Level_1(Level):
     def __init__(self, background, ground, level_id, screen):
         super().__init__(background, ground, level_id, screen)
 
-        self.canRobot.setPOS(500, 200)
+        self.canRobot.setPOS(500, 600)
         self.endDoor.setPOS(10, 640)
+
+        self.level_instructions = [
+            "Uh oh, the door's closed! Thankfully, there are some operational blocks to change that.",
+            "Grab the blocks to make the statement \"Door is Open\" to open the door and proceed!"
+        ]
 
 
         self.doorBlock = Obj_Block(100, 620, 50, 50, 3, "Door", 2)

@@ -29,7 +29,7 @@ class Level:
         self.gameOver = False
         self.eBufferCounter = 0
         self.clock = pygame.time.Clock()
-
+        self.level_instructions = []
 
     # Resolve object ID to target object
     def resolveObjIDtoTargetObj(self, id):
@@ -44,6 +44,14 @@ class Level:
     
     def getObjects(self):
         return self.object_dict
+    
+    def printLevelInstructions(self):
+        font = pygame.font.SysFont('arial', 30)
+        y_offset = 50
+        for line in self.level_instructions:
+            text_surface = font.render(line, True, (255, 255, 255))
+            self.cur_screen.blit(text_surface, (50, y_offset))
+            y_offset += 40
 
     def runLevel(self):
         pygame.mixer.music.load(f'{RESOURCES_FILEPATH}Tea K Pea - mewmew.mp3')
@@ -65,6 +73,8 @@ class Level:
             for sprite in self.spriteList:
                 sprite.update(self.col_list)
                 self.cur_screen.blit(sprite.image, sprite.rect)
+
+            self.printLevelInstructions()
 
             # player input
             keys = pygame.key.get_pressed()

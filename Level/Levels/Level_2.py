@@ -15,7 +15,7 @@ class Level_2(Level):
     def __init__(self, background, ground, level_id, screen):
         super().__init__(background, ground, level_id, screen)
 
-        self.canRobot.setPOS(500, 200)
+        self.canRobot.setPOS(500, 600)
         self.endDoor.setPOS(10, 640)
 
         self.plat1 = platform(980, 400, 80, 40, 10)
