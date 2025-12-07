@@ -67,6 +67,8 @@ class Player(gameObject):
         self.guide.image = pygame.image.load(f'{RESOURCES_FILEPATH}guide.png')
         self.guide.image.set_alpha(0)
         self.isGuideLeft = False
+        self.fallCounter = 1
+        self.fallAccelerator = 1
 
 
     def get_frame(self, frame_set):
@@ -90,20 +92,20 @@ class Player(gameObject):
             self.rect.y += self.bottom_collide(collideList)
             if self.isJumping:
                 roof = self.top_collide(collideList)
-                if self.jumpCount == 20:
+                if self.jumpCount == 23:
                     self.jumpCount = 0
                     self.isJumping = False
-                if self.jumpCount > 14:
+                if self.jumpCount > 20:
                     if roof < 12:
                         self.rect.y -= roof
                     else:
-                        self.rect.y -= 17
+                        self.rect.y -= 12
                     self.jumpCount += 1
                 else:
                     if roof < 15:
                         self.rect.y -= roof
                     else:
-                        self.rect.y -= 20
+                        self.rect.y -= 15
                     self.jumpCount += 1
 
             screen_width = None
@@ -214,21 +216,26 @@ class Player(gameObject):
         return smallest
 
     def bottom_collide(self, collideList):
-        smallest = 10
+        #if( self.jumpCount != 0):
+        self.fallCounter = self.fallCounter * 1.09
+        smallest =  self.fallCounter
         for sprite in collideList:
                 dif =  sprite.rect.top - self.rect.bottom
                 cond1 = smallest > dif >= 0
                 cond2 = self.rect.left < sprite.rect.right and sprite.rect.left < self.rect.right
                 if cond1 and cond2:
                     smallest = dif
+                    self.isJumping = False
+                    self.fallCounter = 1
         return smallest
 
     def jump(self, collideList):
         if not(self.isJumping) and self.bottom_collide(collideList)  == 0:
+            #self.fallCounter = 1
             self.isJumping = True
             self.jumpSound.play()
         if self.isJumping and self.jumpCount < 6:
-            self.rect.y -= 20
+            self.rect.y -= 15
 
 
     def getID(self):
