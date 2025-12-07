@@ -99,14 +99,52 @@ class Player(gameObject):
                     else:
                         self.rect.y -= 15
                     self.jumpCount += 1
+
+            screen_width = None
+            surface = pygame.display.get_surface()
+            if surface:
+                screen_width = surface.get_width()
+
             if direction == 'left':
                 self.clip(self.leftWalkStates)
-                self.rect.x -= self.left_collide(collideList)
+                step = self.left_collide(collideList)
+                attempted_x = self.rect.x - step
+
+                if screen_width is None or attempted_x >= 0:
+                    # normal move (no wrap)
+                    self.rect.x = attempted_x
+                else:
+                    # would go off left edge -> attempt wrap to right side
+                    wrap_x = attempted_x + screen_width
+                    temp = self.rect.copy()
+                    temp.x = wrap_x
+                    if not self._has_collision_at(temp, collideList):
+                        self.rect.x = wrap_x
+                    else:
+                        # blocked by a collision on the wrapped side -> don't move
+                        pass
                 self.lastFace = 'left'
+
             if direction == 'right':
                 self.clip(self.rightWalkStates)
-                self.rect.x += self.right_collide(collideList)
+                step = self.right_collide(collideList)
+                attempted_x = self.rect.x + step
+
+                if screen_width is None or (attempted_x + self.rect.width) <= screen_width:
+                    # normal move
+                    self.rect.x = attempted_x
+                else:
+                    # would go off right edge -> attempt wrap to left side
+                    wrap_x = attempted_x - screen_width
+                    temp = self.rect.copy()
+                    temp.x = wrap_x
+                    if not self._has_collision_at(temp, collideList):
+                        self.rect.x = wrap_x
+                    else:
+                        # blocked by a collision on the wrapped side -> don't move
+                        pass
                 self.lastFace = 'right'
+            
             if direction == 'stand_left':
                 self.clip(self.leftIdleStates)
             if direction == 'stand_right':
@@ -120,6 +158,15 @@ class Player(gameObject):
                 self.grabbed[0].update2(finalx, finaly)
 
             self.image = self.sheet.subsurface(self.sheet.get_clip())
+
+    def _has_collision_at(self, test_rect, collideList):
+        count = 0
+        for sprite in collideList:
+            if count > 0:
+                if test_rect.colliderect(sprite.rect):
+                    return True
+            count += 1
+        return False
 
     def left_collide(self, collideList):
         count = 0
@@ -159,7 +206,6 @@ class Player(gameObject):
         return smallest
 
     def bottom_collide(self, collideList):
-        count = 0
         smallest = 5
         for sprite in collideList:
                 dif =  sprite.rect.top - self.rect.bottom
@@ -173,7 +219,6 @@ class Player(gameObject):
         if not(self.isJumping) and self.bottom_collide(collideList)  == 0:
             self.isJumping = True
             self.jumpSound.play()
-
 
     def getID(self):
         return self.ID
@@ -229,14 +274,9 @@ class Player(gameObject):
     def getID(self):
         return self.ID
 
-
     def att_Handler(self, target):
         if target == PlayerAttributes.JUMP:
             self.canJump = not self.canJump
 
-
     def noJumping(self):
         self.canJump = False
-
-
-

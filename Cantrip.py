@@ -7,6 +7,7 @@ from GameObjects.Assoc_Block.Assoc_Block import Assoc_Block
 from GameObjects.Att_Block.Att_Block import Att_Block
 from Level.Levels.TutorialLevel_1 import TutorialLevel_1
 from Level.Levels.TutorialLevel_2 import TutorialLevel_2
+from Level.Levels.TutorialLevel_3 import TutorialLevel_3
 from Level.Levels.Level_1 import Level_1
 from Level.Levels.Level_2 import Level_2
 from Level.Levels.Level_3 import Level_3
@@ -53,19 +54,22 @@ ground = pygame.sprite.Sprite()
 ground.rect = pygame.Rect(0, 700, screen_w, 20)
 ground.image = pygame.image.load(os.path.join('Resources', 'floor.png'))
 
-firstTutorialLV = TutorialLevel_1(bg, ground, 0, screen)
+firstTutorialLV = TutorialLevel_1(bg, ground, 1, screen)
 firstTutorialLV.runLevel()
 
-secondTutorialLV = TutorialLevel_2(bg, ground, 1, screen)
+secondTutorialLV = TutorialLevel_2(bg, ground, 2, screen)
 secondTutorialLV.runLevel()
 
-firstLV = Level_1(bg, ground, 2, screen)
+thirdTutorialLV = TutorialLevel_3(bg, ground, 0, screen)
+thirdTutorialLV.runLevel()
+
+firstLV = Level_1(bg, ground, 11, screen)
 firstLV.runLevel()
 
-secondLV = Level_2(bg, ground, 3, screen)
+secondLV = Level_2(bg, ground, 12, screen)
 secondLV.runLevel()
 
-thirdLV = Level_3(bg, ground, 4, screen)
+thirdLV = Level_3(bg, ground, 13, screen)
 thirdLV.runLevel()
 
 pygame.quit()
