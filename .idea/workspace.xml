@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="mo blocks yo">
-      <change afterPath="$PROJECT_DIR$/Resources/guide.png" afterDir="false" />
+    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="jump adjustments and guide">
+      <change afterPath="$PROJECT_DIR$/Level/Levels/FInal_LV.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Victory_bg.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameObjects/player/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/player/Player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Level/Level.py" beforeDir="false" afterPath="$PROJECT_DIR$/Level/Level.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cantrip.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cantrip.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,8 +213,27 @@
       <option name="project" value="LOCAL" />
       <updated>1763423206842</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="jump adjustments and guide">
+      <option name="closed" value="true" />
+      <created>1765131856949</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1765131856949</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="player gravity" />
@@ -230,6 +249,7 @@
     <MESSAGE value="door" />
     <MESSAGE value="jumpability" />
     <MESSAGE value="mo blocks yo" />
-    <option name="LAST_COMMIT_MESSAGE" value="mo blocks yo" />
+    <MESSAGE value="jump adjustments and guide" />
+    <option name="LAST_COMMIT_MESSAGE" value="jump adjustments and guide" />
   </component>
 </project>

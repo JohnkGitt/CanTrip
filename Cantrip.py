@@ -11,6 +11,7 @@ from Level.Levels.TutorialLevel_3 import TutorialLevel_3
 from Level.Levels.Level_1 import Level_1
 from Level.Levels.Level_2 import Level_2
 from Level.Levels.Level_3 import Level_3
+from Level.Levels.FInal_LV import FinalLV
 from Menu import Menu
 
 # Intialize Pygame
@@ -71,6 +72,10 @@ secondLV.runLevel()
 
 thirdLV = Level_3(bg, ground, 13, screen)
 thirdLV.runLevel()
+
+bgF = pygame.image.load(os.path.join('Resources', 'Victory_bg.jpg'))
+FinalLV = FinalLV(bgF, ground, 99, screen)
+FinalLV.runLevel()
 
 pygame.quit()
 
