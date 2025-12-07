@@ -105,6 +105,7 @@ class Level:
             else:
                 self.canRobot.update('stand_right', self.col_list)
             self.cur_screen.blit(self.canRobot.image, self.canRobot.rect)
+            self.cur_screen.blit(self.canRobot.guide.image, self.canRobot.guide.rect)
 
             pygame.display.flip()
             self.clock.tick(20)

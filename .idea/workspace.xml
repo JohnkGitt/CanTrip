@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="music and jump sfx">
+    <list default="true" id="06a490e2-bd62-4017-a76d-998481257d2a" name="Changes" comment="mo blocks yo">
+      <change afterPath="$PROJECT_DIR$/Resources/guide.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameObjects/player/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameObjects/player/Player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Level/Level.py" beforeDir="false" afterPath="$PROJECT_DIR$/Level/Level.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,11 +23,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -34,12 +31,12 @@
     &quot;assignee&quot;: &quot;JohnkGitt&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/JohnkGitt/CanTrip.git&quot;,
-    &quot;accountId&quot;: &quot;19587988-1103-4091-88fe-d065fdae4854&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/JohnkGitt/CanTrip.git",
+    "accountId": "19587988-1103-4091-88fe-d065fdae4854"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -56,7 +53,7 @@
     "Python.Player.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "OS-Nonsense",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "/home/john-aragon/PycharmProjects/CanTrip/Resources",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
@@ -70,7 +67,6 @@
       <recent name="C:\Users\John\PycharmProjects\CanTrip\GameObjects\Att_Block" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Level" />
       <recent name="C:\Users\John\PycharmProjects\CanTrip" />
     </key>
   </component>
@@ -101,7 +97,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-f69e5c277ee4-cbfc7b97e6b2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.27397.106" />
+        <option value="bundled-python-sdk-7bb8055f9097-cbfc7b97e6b2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.28238.29" />
       </set>
     </attachedChunks>
   </component>
@@ -169,70 +165,56 @@
       <option name="project" value="LOCAL" />
       <updated>1761758881884</updated>
     </task>
-    <task id="LOCAL-00008" summary="Cross OS usability">
+    <task id="LOCAL-00008" summary="level 2 update">
       <option name="closed" value="true" />
-      <created>1763229302419</created>
+      <created>1763415194693</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1763229302419</updated>
+      <updated>1763415194693</updated>
     </task>
-    <task id="LOCAL-00009" summary="music and jump sfx">
+    <task id="LOCAL-00009" summary="bug fix">
       <option name="closed" value="true" />
-      <created>1763406607978</created>
+      <created>1763415447552</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1763406607978</updated>
+      <updated>1763415447552</updated>
     </task>
-    <task id="LOCAL-00010" summary="music and jump sfx">
+    <task id="LOCAL-00010" summary="player is not forced to mime walls">
       <option name="closed" value="true" />
-      <created>1763407004771</created>
+      <created>1763416755225</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1763407004771</updated>
+      <updated>1763416755225</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="door">
+      <option name="closed" value="true" />
+      <created>1763417548273</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1763417548273</updated>
+    </task>
+    <task id="LOCAL-00012" summary="jumpability">
+      <option name="closed" value="true" />
+      <created>1763420460265</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1763420460265</updated>
+    </task>
+    <task id="LOCAL-00013" summary="mo blocks yo">
+      <option name="closed" value="true" />
+      <created>1763423206842</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1763423206842</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="OS-Nonsense" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="OS-Nonsense" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="player gravity" />
@@ -242,8 +224,12 @@
     <MESSAGE value="door attHandler update" />
     <MESSAGE value="door open and wincon" />
     <MESSAGE value="block placeholder sprites" />
-    <MESSAGE value="Cross OS usability" />
-    <MESSAGE value="music and jump sfx" />
-    <option name="LAST_COMMIT_MESSAGE" value="music and jump sfx" />
+    <MESSAGE value="level 2 update" />
+    <MESSAGE value="bug fix" />
+    <MESSAGE value="player is not forced to mime walls" />
+    <MESSAGE value="door" />
+    <MESSAGE value="jumpability" />
+    <MESSAGE value="mo blocks yo" />
+    <option name="LAST_COMMIT_MESSAGE" value="mo blocks yo" />
   </component>
 </project>

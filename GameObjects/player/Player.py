@@ -62,6 +62,12 @@ class Player(gameObject):
         self.jumpSound = pygame.mixer.Sound(f'{RESOURCES_FILEPATH}jump.mp3')
         self.grabSound = pygame.mixer.Sound(f'{RESOURCES_FILEPATH}grab.mp3')
         self.placeSound = pygame.mixer.Sound(f'{RESOURCES_FILEPATH}place.mp3')
+        self.guide = pygame.sprite.Sprite()
+        self.guide.rect = pygame.Rect(100, 0, 55, 10)
+        self.guide.image = pygame.image.load(f'{RESOURCES_FILEPATH}guide.png')
+        self.guide.image.set_alpha(0)
+        self.isGuideLeft = False
+
 
     def get_frame(self, frame_set):
             self.frame += 1
@@ -91,13 +97,13 @@ class Player(gameObject):
                     if roof < 12:
                         self.rect.y -= roof
                     else:
-                        self.rect.y -= 12
+                        self.rect.y -= 17
                     self.jumpCount += 1
                 else:
                     if roof < 15:
                         self.rect.y -= roof
                     else:
-                        self.rect.y -= 15
+                        self.rect.y -= 20
                     self.jumpCount += 1
 
             screen_width = None
@@ -124,6 +130,7 @@ class Player(gameObject):
                         # blocked by a collision on the wrapped side -> don't move
                         pass
                 self.lastFace = 'left'
+                self.setGuideLeft()
 
             if direction == 'right':
                 self.clip(self.rightWalkStates)
@@ -144,6 +151,7 @@ class Player(gameObject):
                         # blocked by a collision on the wrapped side -> don't move
                         pass
                 self.lastFace = 'right'
+                self.setGuideRight()
             
             if direction == 'stand_left':
                 self.clip(self.leftIdleStates)
@@ -206,7 +214,7 @@ class Player(gameObject):
         return smallest
 
     def bottom_collide(self, collideList):
-        smallest = 5
+        smallest = 10
         for sprite in collideList:
                 dif =  sprite.rect.top - self.rect.bottom
                 cond1 = smallest > dif >= 0
@@ -219,6 +227,9 @@ class Player(gameObject):
         if not(self.isJumping) and self.bottom_collide(collideList)  == 0:
             self.isJumping = True
             self.jumpSound.play()
+        if self.isJumping and self.jumpCount < 6:
+            self.rect.y -= 20
+
 
     def getID(self):
         return self.ID
@@ -242,21 +253,25 @@ class Player(gameObject):
             self.grabCollider = pygame.Rect(self.rect.x - 20, self.rect.y, 20, self.rect.height)
             for block  in blockGroup:
                 if self.grabCollider.colliderect(block):
+                    self.guide.image.set_alpha(255)
                     self.grabbed.append(block)
                     block.rect.y -= self.rect.height
                     block.rect.x = self.rect.x - self.rect.width
                     collideGroup.remove(block)
                     self.grabbed[0].changeGrabbed()
+
                     return
         else:
             self.grabCollider = pygame.Rect(self.rect.right + 20, self.rect.y, 20, self.rect.height)
             for block in blockGroup:
                 if self.grabCollider.colliderect(block):
+                    self.guide.image.set_alpha(255)
                     self.grabbed.append(block)
                     block.rect.y -= self.rect.height
                     block.rect.x = self.rect.x - self.rect.width
                     collideGroup.remove(block)
                     self.grabbed[0].changeGrabbed()
+
                     return
 
     def place(self, collideList):
@@ -269,6 +284,7 @@ class Player(gameObject):
         collideList.add(self.grabbed[0])
         self.grabbed[0].changeGrabbed()
         self.grabbed.pop()
+        self.guide.image.set_alpha(0)
         self.placeSound.play()
 
     def getID(self):
@@ -280,3 +296,19 @@ class Player(gameObject):
 
     def noJumping(self):
         self.canJump = False
+
+    def changeGuideDir(self):
+        self.isGuideLeft = not self.isGuideLeft
+        self.guide.image = pygame.transform.flip(self.guide.image, True, False)
+
+    def setGuideLeft(self):
+        self.guide.rect.right = self.rect.left
+        self.guide.rect.y = self.rect.y + 42
+        if not self.isGuideLeft:
+            self.changeGuideDir()
+
+    def setGuideRight(self):
+        self.guide.rect.left = self.rect.right
+        self.guide.rect.y = self.rect.y + 42
+        if self.isGuideLeft:
+            self.changeGuideDir()
