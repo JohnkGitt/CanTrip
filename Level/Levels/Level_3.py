@@ -23,10 +23,6 @@ class Level_3(Level):
             "Luckily, there are blocks that can help you regain this ability!",
         ]
 
-        self.plat1 = platform(10, 600, 80, 40, 10)
-        self.col_list.add(self.plat1)
-        self.spriteList.add(self.plat1)
-
         self.plat2 = platform(120, 450, 80, 40, 10)
         self.col_list.add(self.plat2)
         self.spriteList.add(self.plat2)

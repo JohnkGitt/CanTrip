@@ -10,7 +10,7 @@ class TutorialLevel_2(Level):
         super().__init__(background, ground, level_id, screen)
 
         self.canRobot.setPOS(500, 600)
-        self.endDoor.setPOS(10, 440)
+        self.endDoor.setPOS(10, 290)
         self.endDoor.open_door()  # Door starts open in tutorial
 
         self.level_instructions = [
@@ -19,7 +19,7 @@ class TutorialLevel_2(Level):
             "Then, jump to the platform with [UP ARROW] and reach the door to proceed."
         ]
 
-        self.plat1 = platform(0, 500, 80, 40, 10)
+        self.plat1 = platform(0, 350, 80, 40, 10)
         self.col_list.add(self.plat1)
         self.spriteList.add(self.plat1)
 

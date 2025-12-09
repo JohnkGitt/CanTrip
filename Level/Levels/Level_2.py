@@ -18,25 +18,10 @@ class Level_2(Level):
         self.canRobot.setPOS(500, 600)
         self.endDoor.setPOS(10, 640)
 
-        self.plat1 = platform(980, 400, 80, 40, 10)
-        self.col_list.add(self.plat1)
-        self.spriteList.add(self.plat1)
-
-        self.plat2 = platform(1060, 400, 80, 40, 10)
-        self.col_list.add(self.plat2)
-        self.spriteList.add(self.plat2)
-
-        self.plat2 = platform(1140, 400, 80, 40, 10)
-        self.col_list.add(self.plat2)
-        self.spriteList.add(self.plat2)
-        self.plat3 = platform(1220, 400, 80, 40, 10)
-        self.col_list.add(self.plat3)
-        self.spriteList.add(self.plat3)
-
-        self.plat4 = platform(900, 500, 80, 40, 10)
+        self.plat4 = platform(900, 350, 80, 40, 10)
         self.col_list.add(self.plat4)
         self.spriteList.add(self.plat4)
-        self.plat5 = platform(820, 500, 80, 40, 10)
+        self.plat5 = platform(820, 350, 80, 40, 10)
         self.col_list.add(self.plat5)
         self.spriteList.add(self.plat5)
 
@@ -48,17 +33,11 @@ class Level_2(Level):
         self.all_gameObjects.add(self.doorBlock)
 
 
-        self.openBlock = Att_Block(1200, 300, 50, 50, 5, "Open", 0)
+        self.openBlock = Att_Block(900, 250, 50, 50, 5, "Open", 0)
         self.col_list.add(self.openBlock)
         self.spriteList.add(self.openBlock)
         self.blockList.add(self.openBlock)
         self.all_gameObjects.add(self.openBlock)
-
-        self.door2Block = Obj_Block(100, 540, 50, 50, 6, "Door", 2)
-        self.col_list.add(self.door2Block)
-        self.spriteList.add(self.door2Block)
-        self.blockList.add(self.door2Block)
-        self.all_gameObjects.add(self.door2Block)
 
         # Assoc Block
         self.assocBlock = Assoc_Block(550, 620, 50, 50, 4, "is", self.all_gameObjects)
