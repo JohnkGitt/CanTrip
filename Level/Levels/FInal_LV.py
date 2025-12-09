@@ -9,11 +9,13 @@ from GameObjects.Att_Block.Att_Block import Att_Block
 
 class FinalLV(Level):
     def __init__(self, background, ground, level_id, screen):
-        super().__init__(background, ground, level_id, screen)
+        super().__init__(background, ground, level_id, screen, cutscene=True)
 
-        self.canRobot.setPOS(500, 600)
-        self.endDoor.setPOS(-100, -100)
+        self.canRobot.setPOS(10, 640)
+        self.endDoor.setPOS(10, 640)
+        self.endDoor.open_door()
 
         self.level_instructions = [
-            "You've made it!  Thank You for Playing!"
+            "You've made it! CANRobot has escaped the factory thanks to your help.",
+            "Thank you for playing!"
         ]

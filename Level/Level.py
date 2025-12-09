@@ -7,7 +7,7 @@ from GameObjects.Assoc_Block import Assoc_Block
 RESOURCES_FILEPATH = os.path.join('Resources', '')
 
 class Level:
-    def __init__(self, background, ground, level_id, screen):
+    def __init__(self, background, ground, level_id, screen, cutscene=False):
         self.background = background      # Background image for the level
         self.ground = ground              # Ground sprite for collision detection
         self.level_id = level_id          # Level identifier
@@ -33,6 +33,7 @@ class Level:
         self.level_instructions = []
         self.assoc_status = {}
         self.horizontal_text_offset = 900  # Default horizontal offset for text display
+        self.cutscene = cutscene
 
     # Resolve object ID to target object
     def resolveObjIDtoTargetObj(self, id):
@@ -116,34 +117,36 @@ class Level:
 
             self.printLevelInstructions()
 
-            # player input
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_LEFT]:
-                self.canRobot.update('left', self.col_list)
-                if keys[pygame.K_UP]:
-                    self.canRobot.update('up', self.col_list)
-            elif keys[pygame.K_RIGHT]:
+            if self.cutscene:
                 self.canRobot.update('right', self.col_list)
-                if keys[pygame.K_UP]:
-                    self.canRobot.update('up', self.col_list)
-            elif keys[pygame.K_UP]:
-                self.canRobot.update('up', self.col_list)
-            elif keys[pygame.K_e] and self.eBufferCounter > 3:
-                if len(self.canRobot.grabbed) == 0:
-                    self.canRobot.grab(self.blockList, self.col_list)
-                    self.eBufferCounter = 0
-                else:
-                    self.canRobot.place(self.col_list)
-                    self.eBufferCounter = 0
-
-            elif keys[pygame.K_SPACE] and self.endDoor.isOpen():
-                if self.canRobot.rect.colliderect(self.endDoor.rect):
-                    pygame.display.set_caption("win")
-                    self.gameOver = True
-                    pass
-            
             else:
-                self.canRobot.update('stand_right', self.col_list)
+                # player input
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_LEFT]:
+                    self.canRobot.update('left', self.col_list)
+                    if keys[pygame.K_UP]:
+                        self.canRobot.update('up', self.col_list)
+                elif keys[pygame.K_RIGHT]:
+                    self.canRobot.update('right', self.col_list)
+                    if keys[pygame.K_UP]:
+                        self.canRobot.update('up', self.col_list)
+                elif keys[pygame.K_UP]:
+                    self.canRobot.update('up', self.col_list)
+                elif keys[pygame.K_e] and self.eBufferCounter > 3:
+                    if len(self.canRobot.grabbed) == 0:
+                        self.canRobot.grab(self.blockList, self.col_list)
+                        self.eBufferCounter = 0
+                    else:
+                        self.canRobot.place(self.col_list)
+                        self.eBufferCounter = 0
+                elif keys[pygame.K_SPACE] and self.endDoor.isOpen():
+                    if self.canRobot.rect.colliderect(self.endDoor.rect):
+                        pygame.display.set_caption("win")
+                        self.gameOver = True
+                        pass
+                else:
+                    self.canRobot.update('stand_right', self.col_list)
+                    
             self.cur_screen.blit(self.canRobot.image, self.canRobot.rect)
             self.cur_screen.blit(self.canRobot.guide.image, self.canRobot.guide.rect)
 

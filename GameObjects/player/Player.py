@@ -17,7 +17,7 @@ class PlayerAttributes(Enum):
     GRAB = 3
 
 class Player(gameObject):
-    def __init__(self, x, y, width, height, id, has_physics=True, grabbable=False):
+    def __init__(self, x, y, width, height, id, has_physics=True, grabbable=False, wrappingAllowed=True):
         self.has_physics = has_physics
         self.grabbable = grabbable
         super().__init__(x, y, width, height, id, has_physics=has_physics, grabbable=grabbable)
@@ -30,6 +30,7 @@ class Player(gameObject):
         self.finaly = 0
 
         self.canJump = True
+        self.wrappingAllowed = wrappingAllowed
 
         self.grabbed = []
 
@@ -121,7 +122,7 @@ class Player(gameObject):
                 if screen_width is None or attempted_x >= 0:
                     # normal move (no wrap)
                     self.rect.x = attempted_x
-                else:
+                elif self.wrappingAllowed:
                     # would go off left edge -> attempt wrap to right side
                     wrap_x = attempted_x + screen_width
                     temp = self.rect.copy()
@@ -142,7 +143,7 @@ class Player(gameObject):
                 if screen_width is None or (attempted_x + self.rect.width) <= screen_width:
                     # normal move
                     self.rect.x = attempted_x
-                else:
+                elif self.wrappingAllowed:
                     # would go off right edge -> attempt wrap to left side
                     wrap_x = attempted_x - screen_width
                     temp = self.rect.copy()
