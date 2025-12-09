@@ -12,6 +12,7 @@ from Level.Levels.Level_1 import Level_1
 from Level.Levels.Level_2 import Level_2
 from Level.Levels.Level_3 import Level_3
 from Level.Levels.Level_4 import Level_4
+from Level.Levels.Level_5 import Level_5
 from Level.Levels.FInal_LV import FinalLV
 from Menu import Menu
 
@@ -56,9 +57,6 @@ ground = pygame.sprite.Sprite()
 ground.rect = pygame.Rect(0, 700, screen_w, 20)
 ground.image = pygame.image.load(os.path.join('Resources', 'floor.png'))
 
-fourthLV = Level_4(bg, ground, 14, screen)
-fourthLV.runLevel()
-
 firstTutorialLV = TutorialLevel_1(bg, ground, 1, screen)
 firstTutorialLV.runLevel()
 
@@ -79,6 +77,9 @@ thirdLV.runLevel()
 
 fourthLV = Level_4(bg, ground, 14, screen)
 fourthLV.runLevel()
+
+fifthLV = Level_5(bg, ground, 15, screen)
+fifthLV.runLevel()
 
 bgF = pygame.image.load(os.path.join('Resources', 'Victory_bg.jpg'))
 FinalLV = FinalLV(bgF, ground, 99, screen)

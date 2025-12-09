@@ -172,6 +172,10 @@ class Level:
     
         assocsToPrint = []
 
+        obj = None
+        assoc_block = None
+        att = None
+
         for key, entry in self.assoc_status.items():
             # entry should be a dict like {"active": bool, "assoc_block": ..., "obj": ..., "att": ...}
             obj = entry.get("obj")

@@ -8,11 +8,11 @@ from GameObjects.Assoc_Block.Assoc_Block import Assoc_Block
 from GameObjects.Att_Block.Att_Block import Att_Block
 from GameObjects.platform.platform import platform
 
-class Level_2(Level):
+class Level_5(Level):
     def __init__(self, background, ground, level_id, screen):
         super().__init__(background, ground, level_id, screen)
 
-        self.canRobot.setPOS(500, 600)
+        self.canRobot.setPOS(400, 600)
         self.endDoor.setPOS(10, 640)
 
         self.plat4 = platform(900, 350, 80, 40, 10)
@@ -22,21 +22,24 @@ class Level_2(Level):
         self.col_list.add(self.plat5)
         self.spriteList.add(self.plat5)
 
-
         self.doorBlock = Obj_Block(100, 620, 50, 50, 3, "Door", 2)
         self.col_list.add(self.doorBlock)
         self.spriteList.add(self.doorBlock)
         self.blockList.add(self.doorBlock)
         self.all_gameObjects.add(self.doorBlock)
 
-
-        self.openBlock = Att_Block(900, 250, 50, 50, 5, "Open", 0)
+        self.openBlock = Att_Block(900, 250, 50, 50, 6, "Open", 0)
         self.col_list.add(self.openBlock)
         self.spriteList.add(self.openBlock)
         self.blockList.add(self.openBlock)
         self.all_gameObjects.add(self.openBlock)
 
-        # Assoc Block
+        self.wrongAssocBlock = Assoc_Block(500, 630, 50, 50, 5, "can", self.all_gameObjects)
+        self.col_list.add(self.wrongAssocBlock)
+        self.spriteList.add(self.wrongAssocBlock)
+        self.blockList.add(self.wrongAssocBlock)
+        self.all_gameObjects.add(self.wrongAssocBlock)
+
         self.assocBlock = Assoc_Block(550, 620, 50, 50, 4, "is", self.all_gameObjects)
         self.col_list.add(self.assocBlock)
         self.spriteList.add(self.assocBlock)
