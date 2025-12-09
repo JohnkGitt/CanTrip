@@ -38,3 +38,6 @@ class Level_1(Level):
         self.spriteList.add(self.openBlock)
         self.blockList.add(self.openBlock)
         self.all_gameObjects.add(self.openBlock)
+        self.horizontal_text_offset = 1100
+
+        self.assoc_status = {4: {"active": False, "assoc_block": self.assocBlock, "obj": self.doorBlock, "att": self.openBlock}}

@@ -50,3 +50,6 @@ class Level_3(Level):
         self.spriteList.add(self.assocBlock)
         self.blockList.add(self.assocBlock)
         self.all_gameObjects.add(self.assocBlock)
+        self.horizontal_text_offset = 1100
+
+        self.assoc_status = {5: {"active": False, "assoc_block": self.assocBlock, "obj": self.botBlock, "att": self.jumpBlock}}

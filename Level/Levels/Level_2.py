@@ -46,3 +46,4 @@ class Level_2(Level):
         self.blockList.add(self.assocBlock)
         self.all_gameObjects.add(self.assocBlock)
 
+        self.assoc_status = {4: {"active": False, "assoc_block": self.assocBlock, "obj": self.doorBlock, "att": self.openBlock}}

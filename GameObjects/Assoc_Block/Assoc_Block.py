@@ -158,7 +158,9 @@ class Assoc_Block(gameObject):
             if obj.getID() == id:
                 return obj
         return None
-
+    
+    def isThereAssociation(self):
+        return self.associationActive
                 
         
 

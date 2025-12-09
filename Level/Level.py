@@ -2,6 +2,7 @@ import pygame
 import os
 from GameObjects.player.Player import Player
 from GameObjects.Door.Door import Door
+from GameObjects.Assoc_Block import Assoc_Block
 
 RESOURCES_FILEPATH = os.path.join('Resources', '')
 
@@ -30,6 +31,8 @@ class Level:
         self.eBufferCounter = 0
         self.clock = pygame.time.Clock()
         self.level_instructions = []
+        self.assoc_status = {}
+        self.horizontal_text_offset = 900  # Default horizontal offset for text display
 
     # Resolve object ID to target object
     def resolveObjIDtoTargetObj(self, id):
@@ -45,6 +48,40 @@ class Level:
     def getObjects(self):
         return self.object_dict
     
+    def update_assoc_status(self):
+        new_status = {}
+        for block in self.blockList:
+            if isinstance(block, Assoc_Block.Assoc_Block):
+                status = {
+                    "active": getattr(block, "associationActive", False),
+                    "assoc_block": block,
+                    "obj": getattr(block, "objBlockAssociation", None),
+                    "att": getattr(block, "attBlockAssociation", None),
+                    "remove": getattr(block, "removeAssociation", False)
+                }
+                # store by the assoc block's unique id (use rect.topleft as fallback if no id)
+                try:
+                    key = block.id
+                except AttributeError:
+                    key = (block.rect.x, block.rect.y)
+                new_status[key] = status
+        self.assoc_status = new_status
+
+    def is_assoc_active_for_block(self, assoc_block):
+        key = assoc_block.id if isinstance(assoc_block, Assoc_Block.Assoc_Block) else assoc_block
+        entry = self.assoc_status.get(key)
+        return bool(entry and entry.get("active"))
+
+    def get_assoc_for_block(self, assoc_block):
+        key = assoc_block.id if isinstance(assoc_block, Assoc_Block.Assoc_Block) else assoc_block
+        entry = self.assoc_status.get(key)
+        if not entry:
+            return (False, None, None, False)
+        return (entry.get("active", False), entry.get("obj"), entry.get("att"), entry.get("remove", False))
+
+    def get_all_assoc_statuses(self):
+        return self.assoc_status
+    
     def printLevelInstructions(self):
         font = pygame.font.SysFont('arial', 30)
         y_offset = 50
@@ -56,7 +93,6 @@ class Level:
     def runLevel(self):
         pygame.mixer.music.load(f'{RESOURCES_FILEPATH}Tea K Pea - mewmew.mp3')
         pygame.mixer.music.play(loops=-1)
-
 
         while not self.gameOver:
             for event in pygame.event.get():
@@ -73,6 +109,10 @@ class Level:
             for sprite in self.spriteList:
                 sprite.update(self.col_list)
                 self.cur_screen.blit(sprite.image, sprite.rect)
+
+            self.update_assoc_status()
+
+            self.additionalLeveRunLogic()
 
             self.printLevelInstructions()
 
@@ -101,7 +141,7 @@ class Level:
                     pygame.display.set_caption("win")
                     self.gameOver = True
                     pass
-
+            
             else:
                 self.canRobot.update('stand_right', self.col_list)
             self.cur_screen.blit(self.canRobot.image, self.canRobot.rect)
@@ -109,6 +149,52 @@ class Level:
 
             pygame.display.flip()
             self.clock.tick(20)
+
+    
+    def additionalLeveRunLogic(self):
+        if not self.assoc_status:
+            return
+        
+        # helper to get a display string from an object
+        def text_of(o):
+            if o is None:
+                return ""
+            # prefer a get_text() method if provided, else a .text attribute, else str()
+            getter = getattr(o, "get_text", None)
+            if callable(getter):
+                try:
+                    return getter()
+                except Exception:
+                    pass
+            if hasattr(o, "text"):
+                return getattr(o, "text")
+            return str(o)
+    
+        assocsToPrint = []
+
+        for key, entry in self.assoc_status.items():
+            # entry should be a dict like {"active": bool, "assoc_block": ..., "obj": ..., "att": ...}
+            obj = entry.get("obj")
+            assoc_block = entry.get("assoc_block")
+            att = entry.get("att")
+
+        obj_text = text_of(obj)
+        assoc_text = text_of(assoc_block)
+        att_text = text_of(att)
+
+        newLine = f'{obj_text} {assoc_text} {att_text}'
+
+        color = (0, 255, 0) if entry.get("active") else (255, 0, 0)
+
+        assocsToPrint.append((newLine, color))
+      
+        font = pygame.font.SysFont('arial', 30)
+        y_offset = 50
+        for line, color in assocsToPrint:
+            text_surface = font.render(line, True, color)
+            self.cur_screen.blit(text_surface, (self.horizontal_text_offset, y_offset))
+            y_offset += 40
+
 
 
 
